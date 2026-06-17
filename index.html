@@ -163,6 +163,10 @@ body.has-cart .top{bottom:80px}
 .cp-foot{padding:14px 18px 18px;border-top:1px solid var(--line);background:#fff}
 .cp-total{display:flex;justify-content:space-between;align-items:baseline;font-size:15px;margin-bottom:12px;color:var(--ink)}
 .cp-total b{font-family:Georgia,serif;font-size:22px;color:var(--wine)}
+.cp-nome{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:15px;color:var(--ink);outline:none;margin-bottom:10px;font-family:inherit}
+.cp-nome::placeholder{color:var(--mut)}
+.cp-nome:focus{border-color:var(--rose)}
+.cp-nome.err{border-color:#e24b4a;background:#fdeceb}
 .cp-go{width:100%;background:#25d366;color:#063b1c;border:0;border-radius:12px;font-size:15px;font-weight:700;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
 .cp-go:hover{background:#1fc25b}
 .cp-go i{font-size:19px}
@@ -993,6 +997,7 @@ body.has-cart .top{bottom:80px}
   <div class="cp-list" id="cpList"></div>
   <div class="cp-foot">
     <div class="cp-total"><span>Total do pedido</span><b id="cpTotal">R$ 0,00</b></div>
+    <input id="cpNome" class="cp-nome" type="text" placeholder="Seu nome (para identificar o pedido)" autocomplete="name">
     <button class="cp-go" id="cpGo" type="button"><i class="ti ti-brand-whatsapp"></i> Fechar Pedido no WhatsApp</button>
     <button class="cp-clear" id="cpClear" type="button">Limpar pedido</button>
   </div>
@@ -1073,16 +1078,20 @@ document.getElementById('cpClose').onclick=closePanel;
 overlay.onclick=closePanel;
 document.getElementById('cpClear').onclick=()=>{const ks=Object.keys(cart);ks.forEach(c=>delete cart[c]);ks.forEach(syncItem);render();};
 
+const cpNome=document.getElementById('cpNome');
+cpNome.addEventListener('input',()=>cpNome.classList.remove('err'));
 function fechar(){
   const ks=Object.keys(cart);if(!ks.length)return;
+  const nome=cpNome.value.trim();
+  if(!nome){openPanel();cpNome.classList.add('err');cpNome.placeholder='Por favor, digite seu nome';cpNome.focus();return;}
   const lines=ks.map(cod=>{const it=cart[cod];const line=it.qty*it.preco;
     const qx=it.qty>1?' ('+it.qty+'x '+fmt(it.preco)+')':'';
     return '#'+cod+' - '+it.nome+qx+' - '+fmt(line);});
   const tt=totals();
-  const msg='*Pedido - '+MARCA_PED+'*\n\n'+lines.join('\n')+'\n\n*Total: '+fmt(tt.t)+'*';
+  const msg='*Pedido - '+nome+'*\n\n'+lines.join('\n')+'\n\n*Total: '+fmt(tt.t)+'*';
   window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank');
 }
-document.getElementById('cGo').onclick=fechar;
+document.getElementById('cGo').onclick=()=>{openPanel();setTimeout(()=>cpNome.focus(),250);};
 document.getElementById('cpGo').onclick=fechar;
 </script>
 </body>
