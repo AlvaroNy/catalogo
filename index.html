@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css" rel="stylesheet">
 <style>
-:root{--bg:#fbf7f4;--ink:#2a1720;--wine:#5c1a32;--wine2:#7a2444;--rose:#b9456b;--rose-l:#f4dbe4;--gold:#c79a3e;--card:#fff;--line:#ecdfe4;--mut:#9a8088}
+:root{--bg:#fbf7f4;--ink:#2a1720;--wine:#5c1a32;--wine2:#7a2444;--rose:#b9456b;--rose-l:#f4dbe4;--gold:#c79a3e;--card:#fff;--line:#ecdfe4;--mut:#6e555d}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
 img{display:block;width:100%;height:100%;object-fit:contain}
@@ -58,11 +58,11 @@ h2 .qt{margin-left:auto;font-family:'Segoe UI',sans-serif;font-size:12px;font-we
 .preco{font-family:Georgia,serif;font-size:18px;font-weight:700;color:var(--wine)}
 /* ADICIONAR / STEPPER */
 .addwrap{margin-top:4px}
-.addbtn{display:flex;width:100%;align-items:center;justify-content:center;gap:6px;background:#25d366;color:#063b1c;font-size:12.5px;font-weight:600;padding:8px;border:0;border-radius:9px;cursor:pointer;transition:.12s}
+.addbtn{display:flex;width:100%;align-items:center;justify-content:center;gap:6px;background:#25d366;color:#063b1c;font-size:12.5px;font-weight:600;padding:11px 8px;min-height:44px;border:0;border-radius:9px;cursor:pointer;transition:.12s}
 .addbtn:hover{background:#1fc25b}
 .addbtn i{font-size:16px}
 .qtybox{display:none;align-items:center;justify-content:space-between;gap:6px;background:#eaf7ee;border:1px solid #bfe6cb;border-radius:9px;padding:4px;margin-top:4px}
-.qtybox button{width:30px;height:30px;border:0;border-radius:7px;background:#25d366;color:#063b1c;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.qtybox button{width:40px;height:40px;border:0;border-radius:7px;background:#25d366;color:#063b1c;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .qtybox button:hover{background:#1fc25b}
 .qtybox [data-qty]{font-weight:700;color:#0a3a1c;min-width:22px;text-align:center;font-size:15px}
 .incart .addbtn{display:none}
@@ -71,10 +71,10 @@ h2 .qt{margin-left:auto;font-family:'Segoe UI',sans-serif;font-size:12px;font-we
 .incart.li{border-color:#25d366;background:#f4fcf6}
 /* controle compacto (listas / contratipos) */
 .addwrap.mini{margin:0;flex:none}
-.addwrap.mini .addbtn{width:auto;padding:8px;font-size:0}
-.addwrap.mini .addbtn i{font-size:17px}
+.addwrap.mini .addbtn{width:44px;min-height:44px;padding:0;font-size:0}
+.addwrap.mini .addbtn i{font-size:18px}
 .addwrap.mini .qtybox{margin:0;padding:3px}
-.addwrap.mini .qtybox button{width:26px;height:26px;font-size:14px}
+.addwrap.mini .qtybox button{width:38px;height:38px;font-size:15px}
 .addwrap.mini .qtybox [data-qty]{min-width:18px;font-size:13px}
 
 /* LISTA (contratipos) */
@@ -129,11 +129,11 @@ body.has-cart .top{bottom:80px}
 .listview .cod{display:none}
 .listview .preco{font-size:15.5px}
 .listview .addwrap{margin:0;flex:none}
-.listview .addbtn{width:auto;padding:8px;font-size:0}
-.listview .addbtn i{font-size:17px}
+.listview .addbtn{width:44px;min-height:44px;padding:0;font-size:0}
+.listview .addbtn i{font-size:18px}
 .listview .addbtn span{display:none}
 .listview .qtybox{margin:0;padding:3px}
-.listview .qtybox button{width:26px;height:26px;font-size:14px}
+.listview .qtybox button{width:38px;height:38px;font-size:15px}
 .listview .qtybox [data-qty]{min-width:18px;font-size:13px}
 
 /* BARRA + PAINEL DO CARRINHO */
@@ -189,7 +189,6 @@ body.has-cart .top{bottom:80px}
 <div class="wrap">
   <div class="tools">
     <label class="search"><i class="ti ti-search"></i><input id="q" type="search" placeholder="Buscar produto, marca ou código..."></label>
-    <nav class="nav"><a href="#perf_import"><i class="ti ti-flask"></i>Perfumes importados <b>24</b></a><a href="#perf_arabe"><i class="ti ti-moon-stars"></i>Perfumes árabes <b>22</b></a><a href="#perf_tester"><i class="ti ti-test-pipe"></i>Testers <b>2</b></a><a href="#contratipo"><i class="ti ti-droplet-half"></i>Contratipos Dream Brand 25ml <b>44</b></a><a href="#arabic_insp"><i class="ti ti-droplet"></i>Inspirações Arabic 25ml <b>4</b></a><a href="#cosm_base"><i class="ti ti-palette"></i>Bases <b>2</b></a><a href="#cosm_vs_lot"><i class="ti ti-bottle"></i>Hidratantes Victoria&#x27;s Secret <b>5</b></a><a href="#cosm_vs_spl"><i class="ti ti-spray"></i>Body Splash Victoria&#x27;s Secret <b>5</b></a><a href="#cosm_nac"><i class="ti ti-droplet"></i>Cremes &amp; Splash nacionais <b>4</b></a><a href="#cosm_mist"><i class="ti ti-air-balloon"></i>Body Mist Maison <b>2</b></a><a href="#cosm_cabelo"><i class="ti ti-wind"></i>Cabelo &amp; Tratamento <b>3</b></a><a href="#cosm_corpo"><i class="ti ti-leaf"></i>Corpo &amp; Skincare <b>2</b></a></nav>
     <div class="viewtoggle">
       <button id="vCards" class="active" type="button"><i class="ti ti-layout-grid"></i> Cards</button>
       <button id="vList" type="button"><i class="ti ti-list"></i> Lista</button>
@@ -1026,6 +1025,8 @@ vC.onclick=()=>{wrap.classList.remove('listview');vC.classList.add('active');vL.
 vL.onclick=()=>{wrap.classList.add('listview');vL.classList.add('active');vC.classList.remove('active');};
 
 const cart={};
+const LS='pedido_alvaro_v1';
+function save(){try{localStorage.setItem(LS,JSON.stringify(cart));}catch(e){}}
 const bar=document.getElementById('cartbar'),panel=document.getElementById('cartpanel'),overlay=document.getElementById('overlay');
 const cCount=document.getElementById('cCount'),cTotal=document.getElementById('cTotal'),cpList=document.getElementById('cpList'),cpTotal=document.getElementById('cpTotal');
 
@@ -1051,6 +1052,7 @@ function chg(cod,d){
 }
 function totals(){let n=0,t=0;for(const k in cart){n+=cart[k].qty;t+=cart[k].qty*cart[k].preco;}return{n:n,t:t};}
 function render(){
+  save();
   const tt=totals();
   cCount.textContent=tt.n;cTotal.textContent=fmt(tt.t);
   bar.hidden=tt.n===0;document.body.classList.toggle('has-cart',tt.n>0);
@@ -1093,6 +1095,9 @@ function fechar(){
 }
 document.getElementById('cGo').onclick=()=>{openPanel();setTimeout(()=>cpNome.focus(),250);};
 document.getElementById('cpGo').onclick=fechar;
+
+/* restaura pedido salvo (nao perde ao recarregar) */
+(function restore(){try{const s=JSON.parse(localStorage.getItem(LS)||'{}');for(const k in s)cart[k]=s[k];}catch(e){}Object.keys(cart).forEach(syncItem);render();})();
 </script>
 </body>
 </html>
