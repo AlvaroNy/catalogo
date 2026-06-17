@@ -150,7 +150,7 @@ body.has-cart .top{bottom:80px}
 .overlay.show{opacity:1;pointer-events:auto}
 .cartpanel{position:fixed;left:0;right:0;bottom:0;z-index:45;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.28);max-width:860px;margin:0 auto;max-height:78vh;display:flex;flex-direction:column;transform:translateY(110%);transition:transform .25s}
 .cartpanel.open{transform:translateY(0)}
-.cp-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.cp-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px;border-bottom:1px solid var(--line);cursor:pointer}
 .cp-head h4{font-family:Georgia,serif;font-size:19px;color:var(--wine);font-weight:600}
 .cp-x{background:transparent;border:0;font-size:24px;color:var(--mut);cursor:pointer;line-height:1}
 .cp-list{overflow-y:auto;padding:4px 16px}
@@ -993,7 +993,7 @@ body.has-cart .top{bottom:80px}
 
 <div class="overlay" id="overlay"></div>
 <div class="cartpanel" id="cartpanel">
-  <div class="cp-head"><h4>Seu pedido</h4><button class="cp-x" id="cpClose" type="button">&times;</button></div>
+  <div class="cp-head" id="cpHead"><h4>Seu pedido</h4><button class="cp-x" id="cpClose" type="button">&times;</button></div>
   <div class="cp-list" id="cpList"></div>
   <div class="cp-foot">
     <div class="cp-total"><span>Total do pedido</span><b id="cpTotal">R$ 0,00</b></div>
@@ -1074,7 +1074,7 @@ document.addEventListener('click',e=>{
   else if(rem){const cod=rem.closest('[data-cod]').dataset.cod;delete cart[cod];syncItem(cod);render();}
 });
 document.getElementById('cInfo').onclick=()=>{panel.classList.contains('open')?closePanel():openPanel();};
-document.getElementById('cpClose').onclick=closePanel;
+document.getElementById('cpHead').onclick=closePanel;
 overlay.onclick=closePanel;
 document.getElementById('cpClear').onclick=()=>{const ks=Object.keys(cart);ks.forEach(c=>delete cart[c]);ks.forEach(syncItem);render();};
 
