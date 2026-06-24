@@ -230,8 +230,8 @@ add("B22","Hidratante Montblanc Signature 100ml",          89.00, "acess_corpo",
 
 # --- Necessaires & Bolsas ---
 add("B03","Carteira Chloé (tam. M)",                       65.00, "acess_bolsa", "carteira", badge="Consultar")
-add("B04","Carteira Chloé (tam. G)",                       85.00, "acess_bolsa", "carteira", badge="Consultar")
-add("B05","Porta Níquel Chloé",                            39.00, "acess_bolsa", "porta niquel", badge="Consultar")
+add("B04","Porta Níquel Chloé (tam. P)",                   39.00, "acess_bolsa", "porta niquel", badge="Consultar")
+add("B05","Necessaire Chloé (tam. M)",                     85.00, "acess_bolsa", "necessaire", badge="Consultar")
 add("B06","Necessaire Armani (preta)",                     99.00, "acess_bolsa", "necessaire", badge="Consultar")
 add("B07","Necessaire Carolina Herrera Cinza",             79.00, "acess_bolsa", "necessaire", badge="Consultar")
 add("B08","Necessaire Carolina Herrera Pied de Poule",     85.00, "acess_bolsa", "necessaire", badge="Consultar")
