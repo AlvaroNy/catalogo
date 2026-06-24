@@ -1,0 +1,12 @@
+# arquivos intermediarios / temporarios
+catalogo.html
+urls.json
+_newblock.txt
+_live.html
+__pycache__/
+*.pyc
+
+# imagens de origem (so versionamos os .webp servidos)
+img/*.jpg
+img/*.jpeg
+img/*.png
