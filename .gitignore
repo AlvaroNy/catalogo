@@ -6,6 +6,9 @@ _live.html
 __pycache__/
 *.pyc
 
+# config local de pre-visualizacao
+.claude/
+
 # imagens de origem (so versionamos os .webp servidos)
 img/*.jpg
 img/*.jpeg

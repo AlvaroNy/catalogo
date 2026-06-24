@@ -21,6 +21,9 @@ WHATSAPP_F = "(37) 99171-6781"        # como aparece escrito
 INSTAGRAM  = "seu_instagram"          # sem @  -> TROCAR pelo @ real
 ENDERECO   = "Rua Tupis, 174 - Moema"
 REFERENCIA = "Tabela de Atacado · Junho/2026"
+# Data da ultima atualizacao de PRODUTOS/PRECOS (formato DD/MM/AAAA).
+# >>> SO TROQUE quando mudar produto ou preco. Melhorias no site NAO contam. <<<
+ATUALIZADO = "24/06/2026"
 
 # ----------------------------------------------------------------------------
 # CATEGORIAS (ordem de exibicao)
@@ -330,6 +333,8 @@ a{{text-decoration:none;color:inherit}}
 .capa h1{{font-family:Georgia,serif;font-size:40px;font-weight:600;margin:8px 0 4px;letter-spacing:.5px}}
 .capa .sub{{color:#f3c9d6;font-size:14px;max-width:430px;margin:6px auto 0}}
 .capa .selo{{display:inline-block;margin-top:18px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12px;letter-spacing:1px;padding:7px 16px;border-radius:30px}}
+.capa .atualizado{{margin-top:8px;color:rgba(255,255,255,.78);font-size:11px;letter-spacing:.5px}}
+.capa .atualizado i{{font-size:12px;vertical-align:-1px;margin-right:4px}}
 .stats{{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}}
 .stats div{{background:rgba(0,0,0,.18);border-radius:12px;padding:8px 14px;min-width:84px}}
 .stats b{{display:block;font-size:20px;font-family:Georgia,serif}}
@@ -490,6 +495,7 @@ body.has-cart .top{{bottom:80px}}
   <h1>{esc(MARCA)}</h1>
   <p class="sub">{esc(SUBTITULO)}</p>
   <div class="selo">{esc(REFERENCIA)}</div>
+  <div class="atualizado"><i class="ti ti-calendar-check"></i>Atualizado em {esc(ATUALIZADO)}</div>
   <div class="stats">
     <div><b>{total}</b><span>produtos</span></div>
     <div><b>{brl(menor).replace('R$ ','R$')}</b><span>a partir de</span></div>
