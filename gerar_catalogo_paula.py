@@ -41,6 +41,9 @@ CATEGORIAS = [
     ("cosm_mist",    "Body Mist Maison",           "ti-air-balloon",    "card"),
     ("cosm_cabelo",  "Cabelo & Tratamento",        "ti-wind",           "card"),
     ("cosm_corpo",   "Corpo & Skincare",           "ti-leaf",           "card"),
+    ("acess_vela",   "Velas Perfumadas",           "ti-flame",          "card"),
+    ("acess_corpo",  "Géis & Hidratantes",         "ti-bath",           "card"),
+    ("acess_bolsa",  "Necessaires & Bolsas",       "ti-briefcase",      "card"),
 ]
 
 # ----------------------------------------------------------------------------
@@ -204,6 +207,38 @@ add("112", "Revlon Uniq One Leave-in (vermelho) trad.",    69.30, "cosm_cabelo",
 
 # --- Corpo & Skincare ---
 add("1103","St. Ives Creme Corporal Colágeno & Elastina 532ml", 45.00, "cosm_corpo", "St Ives Collagen Elastin body lotion 532ml")
+
+# ============================================================================
+# ACESSORIOS & BRINDES DE MARCA (fotos proprias em img/B##)
+# ============================================================================
+# --- Velas Perfumadas ---
+add("B01","Vela Perfumada Marc Jacobs Perfect 70g",        90.00, "acess_vela", "vela")
+add("B02","Vela Perfumada Burberry Goddess 70g",          100.00, "acess_vela", "vela")
+
+# --- Geis & Hidratantes ---
+add("B12","Gel de Banho Jo Malone 30ml",                   89.00, "acess_corpo", "gel")
+add("B13","Gel de Banho Lancôme La Vie Est Belle 50ml",    79.00, "acess_corpo", "gel")
+add("B14","Gel de Banho Montblanc Legend 100ml",           75.00, "acess_corpo", "gel")
+add("B15","Gel de Banho JPG Le Male Elixir 75ml",          75.00, "acess_corpo", "gel")
+add("B16","Hidratante JPG Scandal Elixir Fem 75ml",        89.00, "acess_corpo", "hidratante")
+add("B17","Hidratante JPG Scandal Absolu 75ml",            89.00, "acess_corpo", "hidratante")
+add("B18","Hidratante Coach Gold 100ml",                   89.00, "acess_corpo", "hidratante")
+add("B19","Hidratante Lacoste L.12.12 Rose 100ml",         89.00, "acess_corpo", "hidratante")
+add("B20","Hidratante Coach Dreams Moonlight 100ml",       89.00, "acess_corpo", "hidratante")
+add("B21","Hidratante JPG Classique 75ml",                 89.00, "acess_corpo", "hidratante")
+add("B22","Hidratante Montblanc Signature 100ml",          89.00, "acess_corpo", "hidratante")
+
+# --- Necessaires & Bolsas ---
+add("B03","Carteira Chloé (tam. M)",                       65.00, "acess_bolsa", "carteira")
+add("B04","Carteira Chloé (tam. G)",                       85.00, "acess_bolsa", "carteira")
+add("B05","Porta Níquel Chloé",                            39.00, "acess_bolsa", "porta niquel")
+add("B06","Necessaire Armani (preta)",                     99.00, "acess_bolsa", "necessaire")
+add("B07","Necessaire Carolina Herrera Cinza",             79.00, "acess_bolsa", "necessaire")
+add("B08","Necessaire Carolina Herrera Pied de Poule",     85.00, "acess_bolsa", "necessaire")
+add("B09","Bolsa Carolina Herrera",                        99.00, "acess_bolsa", "bolsa")
+add("B10","Frasqueira Marc Jacobs",                        89.00, "acess_bolsa", "frasqueira")
+add("B11","Bolsa Jean Paul Gaultier Vermelha (tam. M)",   110.00, "acess_bolsa", "bolsa")
+add("B23","Necessaire Carolina Herrera Good Girl Rosa",   119.00, "acess_bolsa", "necessaire")
 
 # ----------------------------------------------------------------------------
 # HELPERS
