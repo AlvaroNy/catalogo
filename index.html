@@ -175,6 +175,15 @@ body.has-cart .top{bottom:80px}
 .cp-safe{margin:10px 0 0;text-align:center;font-size:12px;color:var(--mut);line-height:1.55}
 .cp-safe i{color:#25d366;font-size:14px;vertical-align:-2px;margin-right:4px}
 .cp-clear{display:block;margin:10px auto 0;background:transparent;border:0;color:var(--mut);font-size:12px;text-decoration:underline;cursor:pointer}
+
+/* LIGHTBOX (toque na foto -> tela cheia + pinca pra zoom) */
+.media img,.lthumb img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(20,8,14,.94);display:none;align-items:center;justify-content:center;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;will-change:transform;transform-origin:0 0;-webkit-user-drag:none}
+.lb-x{position:absolute;top:14px;right:16px;z-index:2;width:42px;height:42px;border:0;border-radius:50%;background:rgba(0,0,0,.4);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.lb-hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:rgba(255,255,255,.7);font-size:12px;pointer-events:none;transition:opacity .4s}
+.lb.zoomed .lb-hint{opacity:0}
 </style>
 </head>
 <body>
@@ -1486,6 +1495,12 @@ body.has-cart .top{bottom:80px}
   </div>
 </div>
 
+<div class="lb" id="lb">
+  <button class="lb-x" id="lbX" type="button" aria-label="Fechar">&times;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-hint">Use dois dedos para dar zoom · toque para fechar</div>
+</div>
+
 <script>
 const WA="5537991716781", MARCA_PED="Alvaro Nayder";
 const BRL=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
@@ -1579,6 +1594,38 @@ function fechar(){
 }
 document.getElementById('cGo').onclick=()=>{openPanel();setTimeout(()=>cpNome.focus(),250);};
 document.getElementById('cpGo').onclick=fechar;
+
+/* LIGHTBOX: 1 toque na foto abre em tela cheia, pinca pra zoom, 1 toque fecha */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbX=document.getElementById('lbX');
+let sc=1,px=0,py=0,startDist=0,startScale=1,moved=false,twoFinger=false,lastX=0,lastY=0;
+function lbApply(){lbImg.style.transform='translate('+px+'px,'+py+'px) scale('+sc+')';lb.classList.toggle('zoomed',sc>1.01);}
+function openLB(src,alt){sc=1;px=0;py=0;lbImg.src=src;lbImg.alt=alt||'';lbApply();lb.classList.add('open');document.body.style.overflow='hidden';}
+function closeLB(){lb.classList.remove('open');document.body.style.overflow='';sc=1;px=0;py=0;}
+function dist(t){const dx=t[0].clientX-t[1].clientX,dy=t[0].clientY-t[1].clientY;return Math.hypot(dx,dy);}
+
+document.addEventListener('click',e=>{
+  const im=e.target.closest('.media img,.lthumb img');
+  if(im){e.preventDefault();openLB(im.currentSrc||im.src,im.alt);}
+});
+lbX.onclick=e=>{e.stopPropagation();closeLB();};
+
+lb.addEventListener('touchstart',e=>{
+  if(e.touches.length===2){twoFinger=true;moved=true;startDist=dist(e.touches);startScale=sc;}
+  else if(e.touches.length===1){lastX=e.touches[0].clientX;lastY=e.touches[0].clientY;if(!twoFinger)moved=false;}
+},{passive:false});
+lb.addEventListener('touchmove',e=>{
+  if(e.touches.length===2){e.preventDefault();const d=dist(e.touches);sc=Math.min(5,Math.max(1,startScale*(d/startDist)));if(sc<=1){px=0;py=0;}lbApply();}
+  else if(e.touches.length===1&&sc>1){e.preventDefault();const t=e.touches[0];px+=t.clientX-lastX;py+=t.clientY-lastY;lastX=t.clientX;lastY=t.clientY;moved=true;lbApply();}
+},{passive:false});
+lb.addEventListener('touchend',e=>{
+  if(e.touches.length===0){
+    if(!moved&&!twoFinger)closeLB();
+    else if(sc<=1.01){sc=1;px=0;py=0;lbApply();}
+    twoFinger=false;
+  }
+});
+/* desktop: clique no fundo ou na imagem fecha */
+lb.addEventListener('click',e=>{if((e.target===lb||e.target===lbImg)&&sc<=1.01)closeLB();});
 
 /* restaura pedido salvo (nao perde ao recarregar) */
 (function restore(){try{const s=JSON.parse(localStorage.getItem(LS)||'{}');for(const k in s)cart[k]=s[k];}catch(e){}Object.keys(cart).forEach(syncItem);render();})();
