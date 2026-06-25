@@ -144,6 +144,8 @@ Depois rode `python build.py` e publique (passo 5).
   fica salvo no aparelho (não some ao recarregar).
 - **Fechar Pedido**: pede o **nome do cliente** e abre o WhatsApp já com a lista
   no formato `#código - Nome - Valor` + **Total** (título `*Pedido - <nome>*`).
+- **Foto em tela cheia**: 1 toque na foto do produto abre em tela cheia; pinça
+  com dois dedos dá zoom (e arrasta para navegar); 1 toque simples fecha.
 - **Cards / Lista**: botão no topo alterna a visualização.
 - **Categorias retráteis**: toque no título recolhe/expande.
 - **Busca** por nome, marca ou código.
