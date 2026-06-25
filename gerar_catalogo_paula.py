@@ -523,13 +523,14 @@ body.has-cart .top{{bottom:80px}}
 .cp-safe i{{color:#25d366;font-size:14px;vertical-align:-2px;margin-right:4px}}
 .cp-clear{{display:block;margin:10px auto 0;background:transparent;border:0;color:var(--mut);font-size:12px;text-decoration:underline;cursor:pointer}}
 
-/* LIGHTBOX (toque na foto -> tela cheia + pinca pra zoom) */
+/* LIGHTBOX (toque na foto -> tela cheia + zoom estilo galeria) */
 .media img,.lthumb img{{cursor:zoom-in}}
-.lb{{position:fixed;inset:0;z-index:200;background:rgba(20,8,14,.94);display:none;align-items:center;justify-content:center;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}}
+.lb{{position:fixed;inset:0;z-index:200;background:rgba(16,6,11,.96);display:none;align-items:center;justify-content:center;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}}
 .lb.open{{display:flex}}
-.lb img{{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;will-change:transform;transform-origin:0 0;-webkit-user-drag:none}}
-.lb-x{{position:absolute;top:14px;right:16px;z-index:2;width:42px;height:42px;border:0;border-radius:50%;background:rgba(0,0,0,.4);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer}}
-.lb-hint{{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:rgba(255,255,255,.7);font-size:12px;pointer-events:none;transition:opacity .4s}}
+.lb img{{max-width:100vw;max-height:100vh;width:auto;height:auto;object-fit:contain;transform-origin:0 0;-webkit-user-drag:none}}
+.lb.zoomed img{{cursor:grab}}
+.lb-x{{position:absolute;top:14px;right:16px;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}}
+.lb-hint{{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:rgba(255,255,255,.65);font-size:12px;pointer-events:none;transition:opacity .4s}}
 .lb.zoomed .lb-hint{{opacity:0}}
 </style>
 </head>
@@ -593,8 +594,8 @@ body.has-cart .top{{bottom:80px}}
 
 <div class="lb" id="lb">
   <button class="lb-x" id="lbX" type="button" aria-label="Fechar">&times;</button>
-  <img id="lbImg" src="" alt="">
-  <div class="lb-hint">Use dois dedos para dar zoom · toque para fechar</div>
+  <img id="lbImg" src="" alt="" draggable="false">
+  <div class="lb-hint">Pinça ou toque duplo para dar zoom</div>
 </div>
 
 <script>
@@ -691,13 +692,34 @@ function fechar(){{
 document.getElementById('cGo').onclick=()=>{{openPanel();setTimeout(()=>cpNome.focus(),250);}};
 document.getElementById('cpGo').onclick=fechar;
 
-/* LIGHTBOX: 1 toque na foto abre em tela cheia, pinca pra zoom, 1 toque fecha */
+/* LIGHTBOX estilo galeria: toque na foto abre; pinca/toque-duplo da zoom (centrado),
+   arrasta com limites; fecha SO no X. */
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbX=document.getElementById('lbX');
-let sc=1,px=0,py=0,startDist=0,startScale=1,moved=false,twoFinger=false,lastX=0,lastY=0;
-function lbApply(){{lbImg.style.transform='translate('+px+'px,'+py+'px) scale('+sc+')';lb.classList.toggle('zoomed',sc>1.01);}}
-function openLB(src,alt){{sc=1;px=0;py=0;lbImg.src=src;lbImg.alt=alt||'';lbApply();lb.classList.add('open');document.body.style.overflow='hidden';}}
-function closeLB(){{lb.classList.remove('open');document.body.style.overflow='';sc=1;px=0;py=0;}}
-function dist(t){{const dx=t[0].clientX-t[1].clientX,dy=t[0].clientY-t[1].clientY;return Math.hypot(dx,dy);}}
+const MINS=1,MAXS=4,DTS=2.6;
+let s=1,tx=0,ty=0,base=null;
+function applyT(anim){{lbImg.style.transition=anim?'transform .26s cubic-bezier(.22,.61,.36,1)':'none';lbImg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';lb.classList.toggle('zoomed',s>1.01);}}
+function ensureBase(){{const r=lbImg.getBoundingClientRect();base={{l:r.left-tx,t:r.top-ty,w:r.width/s,h:r.height/s}};}}
+function clampT(){{
+  const W=innerWidth,H=innerHeight,rw=base.w*s,rh=base.h*s;
+  tx=rw<=W?(W-rw)/2-base.l:Math.min(-base.l,Math.max(W-rw-base.l,tx));
+  ty=rh<=H?(H-rh)/2-base.t:Math.min(-base.t,Math.max(H-rh-base.t,ty));
+}}
+function zoomAt(px,py,ns){{
+  ns=Math.min(MAXS,Math.max(MINS,ns));
+  const cx=(px-base.l-tx)/s,cy=(py-base.t-ty)/s;
+  s=ns;tx=px-base.l-cx*s;ty=py-base.t-cy*s;
+}}
+function openLB(src,alt){{
+  s=1;tx=0;ty=0;base=null;lbImg.alt=alt||'';
+  lbImg.style.transition='none';lbImg.style.transform='';
+  lbImg.src=src;
+  lb.classList.add('open');lb.classList.remove('zoomed');document.body.style.overflow='hidden';
+  const init=()=>{{ensureBase();applyT(false);}};
+  if(lbImg.complete&&lbImg.naturalWidth)requestAnimationFrame(init);else lbImg.onload=()=>requestAnimationFrame(init);
+}}
+function closeLB(){{lb.classList.remove('open','zoomed');document.body.style.overflow='';s=1;tx=0;ty=0;base=null;}}
+function dist(t){{return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);}}
+function mid(t){{return{{x:(t[0].clientX+t[1].clientX)/2,y:(t[0].clientY+t[1].clientY)/2}};}}
 
 document.addEventListener('click',e=>{{
   const im=e.target.closest('.media img,.lthumb img');
@@ -705,23 +727,42 @@ document.addEventListener('click',e=>{{
 }});
 lbX.onclick=e=>{{e.stopPropagation();closeLB();}};
 
+/* --- toque --- */
+let pinch=false,panT=false,sStart=1,dStart=0,plx=0,ply=0,lastTap=0;
 lb.addEventListener('touchstart',e=>{{
-  if(e.touches.length===2){{twoFinger=true;moved=true;startDist=dist(e.touches);startScale=sc;}}
-  else if(e.touches.length===1){{lastX=e.touches[0].clientX;lastY=e.touches[0].clientY;if(!twoFinger)moved=false;}}
+  if(!base)ensureBase();
+  if(e.touches.length===2){{pinch=true;panT=false;sStart=s;dStart=dist(e.touches);applyT(false);}}
+  else if(e.touches.length===1){{
+    const now=e.timeStamp,t=e.touches[0];
+    if(now-lastTap<300){{
+      e.preventDefault();lastTap=0;
+      if(s>1.01){{s=1;}}else zoomAt(t.clientX,t.clientY,DTS);
+      clampT();applyT(true);
+    }}else{{lastTap=now;panT=true;plx=t.clientX;ply=t.clientY;applyT(false);}}
+  }}
 }},{{passive:false}});
 lb.addEventListener('touchmove',e=>{{
-  if(e.touches.length===2){{e.preventDefault();const d=dist(e.touches);sc=Math.min(5,Math.max(1,startScale*(d/startDist)));if(sc<=1){{px=0;py=0;}}lbApply();}}
-  else if(e.touches.length===1&&sc>1){{e.preventDefault();const t=e.touches[0];px+=t.clientX-lastX;py+=t.clientY-lastY;lastX=t.clientX;lastY=t.clientY;moved=true;lbApply();}}
+  if(pinch&&e.touches.length===2){{
+    e.preventDefault();const m=mid(e.touches);
+    zoomAt(m.x,m.y,sStart*dist(e.touches)/dStart);applyT(false);
+  }}else if(panT&&e.touches.length===1&&s>1){{
+    e.preventDefault();const t=e.touches[0];
+    tx+=t.clientX-plx;ty+=t.clientY-ply;plx=t.clientX;ply=t.clientY;applyT(false);
+  }}
 }},{{passive:false}});
 lb.addEventListener('touchend',e=>{{
-  if(e.touches.length===0){{
-    if(!moved&&!twoFinger)closeLB();
-    else if(sc<=1.01){{sc=1;px=0;py=0;lbApply();}}
-    twoFinger=false;
-  }}
+  if(e.touches.length===0){{pinch=false;panT=false;if(base){{clampT();applyT(true);}}}}
+  else if(e.touches.length===1&&pinch){{pinch=false;panT=true;plx=e.touches[0].clientX;ply=e.touches[0].clientY;}}
 }});
-/* desktop: clique no fundo ou na imagem fecha */
-lb.addEventListener('click',e=>{{if((e.target===lb||e.target===lbImg)&&sc<=1.01)closeLB();}});
+
+/* --- desktop --- */
+lb.addEventListener('dblclick',e=>{{if(!base)ensureBase();if(s>1.01){{s=1;}}else zoomAt(e.clientX,e.clientY,DTS);clampT();applyT(true);}});
+lb.addEventListener('wheel',e=>{{e.preventDefault();if(!base)ensureBase();zoomAt(e.clientX,e.clientY,s*(e.deltaY<0?1.18:.85));clampT();applyT(false);}},{{passive:false}});
+let md=false,mlx=0,mly=0;
+lb.addEventListener('mousedown',e=>{{if(s>1){{md=true;mlx=e.clientX;mly=e.clientY;applyT(false);e.preventDefault();}}}});
+addEventListener('mousemove',e=>{{if(md){{tx+=e.clientX-mlx;ty+=e.clientY-mly;mlx=e.clientX;mly=e.clientY;applyT(false);}}}});
+addEventListener('mouseup',()=>{{if(md){{md=false;clampT();applyT(true);}}}});
+addEventListener('resize',()=>{{if(lb.classList.contains('open')){{base=null;s=1;tx=0;ty=0;requestAnimationFrame(()=>{{ensureBase();applyT(false);}});}}}});
 
 /* restaura pedido salvo (nao perde ao recarregar) */
 (function restore(){{try{{const s=JSON.parse(localStorage.getItem(LS)||'{{}}');for(const k in s)cart[k]=s[k];}}catch(e){{}}Object.keys(cart).forEach(syncItem);render();}})();
