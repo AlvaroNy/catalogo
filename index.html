@@ -58,6 +58,20 @@ h2 .qt{margin-left:auto;font-family:'Segoe UI',sans-serif;font-size:12px;font-we
 .row{display:flex;align-items:baseline;justify-content:space-between;margin-top:auto;gap:6px}
 .cod{font-size:11px;color:var(--mut)}
 .preco{font-family:Georgia,serif;font-size:18px;font-weight:700;color:var(--wine)}
+/* PROMOCAO DA COPA */
+.sec-note{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#d0341b;font-weight:600;margin-top:8px}
+.sec-note i{font-size:15px}
+#promo h2{color:#0b6b35;border-bottom-color:#d8edcf}
+#promo h2 i{color:#0b8a3e}
+#promo .card{border:2px solid var(--gold);background:linear-gradient(180deg,#fffdf5,#fff);box-shadow:0 4px 14px rgba(199,154,62,.22)}
+#promo .card:hover{box-shadow:0 10px 24px rgba(199,154,62,.32)}
+.precobox{display:inline-flex;flex-direction:column;align-items:flex-end;line-height:1.05}
+.preco-de{font-family:'Segoe UI',sans-serif;font-size:12px;color:var(--mut);text-decoration:line-through}
+.preco-promo{color:#0b8a3e}
+.badge-off{background:#e0322a;color:#fff;font-size:11px}
+.nav a[href="#promo"]{background:linear-gradient(135deg,#fff6e0,#ffe6bd);border-color:var(--gold);color:#8a5a00;font-weight:700}
+.nav a[href="#promo"] i{color:#d68a00}
+.nav a[href="#promo"] b{background:#ffe1b0;color:#8a5a00}
 /* ADICIONAR / STEPPER */
 .addwrap{margin-top:4px}
 .addbtn{display:flex;width:100%;align-items:center;justify-content:center;gap:6px;background:#25d366;color:#063b1c;font-size:12.5px;font-weight:600;padding:11px 8px;min-height:44px;border:0;border-radius:9px;cursor:pointer;transition:.12s}
@@ -195,7 +209,7 @@ body.has-cart .top{bottom:80px}
   <div class="selo">Tabela de Atacado · Junho/2026</div>
   <div class="atualizado"><i class="ti ti-calendar-check"></i>Atualizado em 24/06/2026</div>
   <div class="stats">
-    <div><b>190</b><span>produtos</span></div>
+    <div><b>200</b><span>produtos</span></div>
     <div><b>R$28,80</b><span>a partir de</span></div>
     <div><b>100%</b><span>originais</span></div>
   </div>
@@ -212,8 +226,83 @@ body.has-cart .top{bottom:80px}
 
   <p class="empty" id="empty">Nenhum produto encontrado. Tente outro termo.</p>
 
-  <section id="perf_import">
+  <section id="promo">
+      <h2 class="sec-h"><i class="ti ti-ball-football"></i>Promoção da Copa<span class="qt">10 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      <p class="sec-note"><i class="ti ti-clock-hour-4"></i>Estoque limitado — aproveite enquanto durar!</p>
+      <div class="sec-body"><div class="grid"><article class="card promo" data-cod="CP1" data-nome="Bad Boy Cobalt 150ml EDP" data-preco="499.00" data-n="bad boy cobalt 150ml edp  CP1">
+      <div class="media"><div class="ph"><span>B</span></div><span class="badge badge-off">-12%</span></div>
+      <div class="info">
+        <p class="nome">Bad Boy Cobalt 150ml EDP</p>
+        <div class="row"><span class="cod">#CP1</span><span class="precobox"><span class="preco-de">R$ 570,00</span><span class="preco preco-promo">R$ 499,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP2" data-nome="Bad Boy Le Parfum 50ml" data-preco="299.00" data-n="bad boy le parfum 50ml  CP2">
+      <div class="media"><div class="ph"><span>B</span></div><span class="badge badge-off">-17%</span></div>
+      <div class="info">
+        <p class="nome">Bad Boy Le Parfum 50ml</p>
+        <div class="row"><span class="cod">#CP2</span><span class="precobox"><span class="preco-de">R$ 360,00</span><span class="preco preco-promo">R$ 299,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP3" data-nome="Bad Boy Sparkling Ice 100ml" data-preco="350.00" data-n="bad boy sparkling ice 100ml  CP3">
+      <div class="media"><div class="ph"><span>B</span></div><span class="badge badge-off">-15%</span></div>
+      <div class="info">
+        <p class="nome">Bad Boy Sparkling Ice 100ml</p>
+        <div class="row"><span class="cod">#CP3</span><span class="precobox"><span class="preco-de">R$ 410,00</span><span class="preco preco-promo">R$ 350,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP4" data-nome="Black XS Men 50ml EDT" data-preco="259.00" data-n="black xs men 50ml edt  CP4">
+      <div class="media"><div class="ph"><span>B</span></div><span class="badge badge-off">-13%</span></div>
+      <div class="info">
+        <p class="nome">Black XS Men 50ml EDT</p>
+        <div class="row"><span class="cod">#CP4</span><span class="precobox"><span class="preco-de">R$ 299,00</span><span class="preco preco-promo">R$ 259,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP5" data-nome="Jean Paul Gaultier Divine Le Parfum 100ml" data-preco="499.00" data-n="jean paul gaultier divine le parfum 100ml  CP5">
+      <div class="media"><div class="ph"><span>J</span></div><span class="badge badge-off">-15%</span></div>
+      <div class="info">
+        <p class="nome">Jean Paul Gaultier Divine Le Parfum 100ml</p>
+        <div class="row"><span class="cod">#CP5</span><span class="precobox"><span class="preco-de">R$ 590,00</span><span class="preco preco-promo">R$ 499,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP6" data-nome="Good Girl Légère 80ml EDP" data-preco="430.00" data-n="good girl légère 80ml edp  CP6">
+      <div class="media"><div class="ph"><span>G</span></div><span class="badge badge-off">-16%</span></div>
+      <div class="info">
+        <p class="nome">Good Girl Légère 80ml EDP</p>
+        <div class="row"><span class="cod">#CP6</span><span class="precobox"><span class="preco-de">R$ 510,00</span><span class="preco preco-promo">R$ 430,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP7" data-nome="Good Girl Sparkling Ice 80ml EDP" data-preco="430.00" data-n="good girl sparkling ice 80ml edp mesmo cheiro do tradicional · edição colecionador CP7">
+      <div class="media"><div class="ph"><span>G</span></div><span class="badge badge-off">-14%</span></div>
+      <div class="info">
+        <p class="nome">Good Girl Sparkling Ice 80ml EDP</p><p class="eq">mesmo cheiro do tradicional · edição colecionador</p>
+        <div class="row"><span class="cod">#CP7</span><span class="precobox"><span class="preco-de">R$ 500,00</span><span class="preco preco-promo">R$ 430,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP8" data-nome="One Million 200ml EDT" data-preco="480.00" data-n="one million 200ml edt  CP8">
+      <div class="media"><div class="ph"><span>O</span></div><span class="badge badge-off">-8%</span></div>
+      <div class="info">
+        <p class="nome">One Million 200ml EDT</p>
+        <div class="row"><span class="cod">#CP8</span><span class="precobox"><span class="preco-de">R$ 520,00</span><span class="preco preco-promo">R$ 480,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP9" data-nome="Armani Si Intense 100ml EDP" data-preco="490.00" data-n="armani si intense 100ml edp  CP9">
+      <div class="media"><div class="ph"><span>A</span></div><span class="badge badge-off">-12%</span></div>
+      <div class="info">
+        <p class="nome">Armani Si Intense 100ml EDP</p>
+        <div class="row"><span class="cod">#CP9</span><span class="precobox"><span class="preco-de">R$ 560,00</span><span class="preco preco-promo">R$ 490,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article><article class="card promo" data-cod="CP10" data-nome="Good Girl Very Glam 30ml EDP" data-preco="259.00" data-n="good girl very glam 30ml edp  CP10">
+      <div class="media"><div class="ph"><span>G</span></div><span class="badge badge-off">-13%</span></div>
+      <div class="info">
+        <p class="nome">Good Girl Very Glam 30ml EDP</p>
+        <div class="row"><span class="cod">#CP10</span><span class="precobox"><span class="preco-de">R$ 299,00</span><span class="preco preco-promo">R$ 259,00</span></span></div>
+        <div class="addwrap"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i><span>Adicionar</span></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
+      </div>
+    </article></div></div>
+    </section><section id="perf_import">
       <h2 class="sec-h"><i class="ti ti-flask"></i>Perfumes importados<span class="qt">34 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="142" data-nome="Animale For Men 100ml EDT" data-preco="175.50" data-n="animale for men 100ml edt  142">
       <div class="media"><img loading="lazy" decoding="async" src="img/142.webp" alt="Animale For Men 100ml EDT"></div>
       <div class="info">
@@ -455,6 +544,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="perf_arabe">
       <h2 class="sec-h"><i class="ti ti-moon-stars"></i>Perfumes árabes<span class="qt">38 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="1150" data-nome="Al Haramain L&#x27;Aventure Men EDP 100ml" data-preco="240.30" data-n="al haramain l&#x27;aventure men edp 100ml  1150">
       <div class="media"><img loading="lazy" decoding="async" src="img/1150.webp" alt="Al Haramain L&#x27;Aventure Men EDP 100ml"></div>
       <div class="info">
@@ -724,6 +814,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="perf_tester">
       <h2 class="sec-h"><i class="ti ti-test-pipe"></i>Testers<span class="qt">1 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="1118" data-nome="Tester Dolce &amp; Gabbana Light Blue Fem 100ml" data-preco="305.10" data-n="tester dolce &amp; gabbana light blue fem 100ml  1118">
       <div class="media"><img loading="lazy" decoding="async" src="img/1118.webp" alt="Tester Dolce &amp; Gabbana Light Blue Fem 100ml"><span class="badge">Tester</span></div>
       <div class="info">
@@ -734,322 +825,325 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="contratipo">
       <h2 class="sec-h"><i class="ti ti-droplet-half"></i>Contratipos Dream Brand 25ml<span class="qt">58 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="lista"><div class="li" data-cod="1109" data-nome="Dream Brand 005 — One Million" data-preco="40.50" data-n="dream brand 005 — one million insp. one million 1109">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 005 — One Million"></span>
       <span class="lname">Dream Brand 005 — One Million<span class="leq">insp. One Million</span><span class="lcod">#1109</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1111" data-nome="Dream Brand 008 — 212 VIP Men" data-preco="40.50" data-n="dream brand 008 — 212 vip men insp. 212 vip men 1111">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 008 — 212 VIP Men"></span>
       <span class="lname">Dream Brand 008 — 212 VIP Men<span class="leq">insp. 212 VIP Men</span><span class="lcod">#1111</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1265" data-nome="Dream Brand 009 — 212 VIP Fem" data-preco="45.00" data-n="dream brand 009 — 212 vip fem insp. 212 vip fem 1265">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 009 — 212 VIP Fem"></span>
       <span class="lname">Dream Brand 009 — 212 VIP Fem<span class="leq">insp. 212 VIP Fem</span><span class="lcod">#1265</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1114" data-nome="Dream Brand 012 — La Vie Est Belle" data-preco="40.50" data-n="dream brand 012 — la vie est belle insp. la vie est belle 1114">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 012 — La Vie Est Belle"></span>
       <span class="lname">Dream Brand 012 — La Vie Est Belle<span class="leq">insp. La Vie Est Belle</span><span class="lcod">#1114</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1780" data-nome="Dream Brand 014 — Miss Dior Blooming" data-preco="45.00" data-n="dream brand 014 — miss dior blooming insp. miss dior blooming 1780">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 014 — Miss Dior Blooming"></span>
       <span class="lname">Dream Brand 014 — Miss Dior Blooming<span class="leq">insp. Miss Dior Blooming</span><span class="lcod">#1780</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1219" data-nome="Dream Brand 015 — Miss Dior" data-preco="45.00" data-n="dream brand 015 — miss dior insp. miss dior 1219">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 015 — Miss Dior"></span>
       <span class="lname">Dream Brand 015 — Miss Dior<span class="leq">insp. Miss Dior</span><span class="lcod">#1219</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1110" data-nome="Dream Brand 021 — Coco Mademoiselle" data-preco="40.50" data-n="dream brand 021 — coco mademoiselle insp. coco mademoiselle 1110">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 021 — Coco Mademoiselle"></span>
       <span class="lname">Dream Brand 021 — Coco Mademoiselle<span class="leq">insp. Coco Mademoiselle</span><span class="lcod">#1110</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1415" data-nome="Dream Brand 022 — Decadence" data-preco="45.00" data-n="dream brand 022 — decadence insp. decadence 1415">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 022 — Decadence"></span>
       <span class="lname">Dream Brand 022 — Decadence<span class="leq">insp. Decadence</span><span class="lcod">#1415</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1363" data-nome="Dream Brand 027 — Hypnotic Poison" data-preco="43.20" data-n="dream brand 027 — hypnotic poison insp. hypnotic poison 1363">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 027 — Hypnotic Poison"></span>
       <span class="lname">Dream Brand 027 — Hypnotic Poison<span class="leq">insp. Hypnotic Poison</span><span class="lcod">#1363</span></span>
-      <span class="lpreco">R$ 43,20</span>
+      <span class="lpreco"><span class="preco">R$ 43,20</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1290" data-nome="Dream Brand 034 — VIP Rose" data-preco="40.50" data-n="dream brand 034 — vip rose insp. vip rose 1290">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 034 — VIP Rose"></span>
       <span class="lname">Dream Brand 034 — VIP Rose<span class="leq">insp. VIP Rose</span><span class="lcod">#1290</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1220" data-nome="Dream Brand 039 — Chanel Chance" data-preco="45.00" data-n="dream brand 039 — chanel chance insp. chanel chance 1220">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 039 — Chanel Chance"></span>
       <span class="lname">Dream Brand 039 — Chanel Chance<span class="leq">insp. Chanel Chance</span><span class="lcod">#1220</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1291" data-nome="Dream Brand 043 — Alien" data-preco="40.50" data-n="dream brand 043 — alien insp. alien 1291">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 043 — Alien"></span>
       <span class="lname">Dream Brand 043 — Alien<span class="leq">insp. Alien</span><span class="lcod">#1291</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1322" data-nome="Dream Brand 055 — Black Opium" data-preco="45.90" data-n="dream brand 055 — black opium insp. black opium 1322">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 055 — Black Opium"></span>
       <span class="lname">Dream Brand 055 — Black Opium<span class="leq">insp. Black Opium</span><span class="lcod">#1322</span></span>
-      <span class="lpreco">R$ 45,90</span>
+      <span class="lpreco"><span class="preco">R$ 45,90</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1266" data-nome="Dream Brand 060 — Narciso For Her" data-preco="45.00" data-n="dream brand 060 — narciso for her insp. narciso for her 1266">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 060 — Narciso For Her"></span>
       <span class="lname">Dream Brand 060 — Narciso For Her<span class="leq">insp. Narciso For Her</span><span class="lcod">#1266</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1267" data-nome="Dream Brand 063 — Armani Si" data-preco="45.00" data-n="dream brand 063 — armani si insp. armani si 1267">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 063 — Armani Si"></span>
       <span class="lname">Dream Brand 063 — Armani Si<span class="leq">insp. Armani Si</span><span class="lcod">#1267</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1107" data-nome="Dream Brand 069 — La Nuit Trésor" data-preco="45.00" data-n="dream brand 069 — la nuit trésor insp. la nuit trésor 1107">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 069 — La Nuit Trésor"></span>
       <span class="lname">Dream Brand 069 — La Nuit Trésor<span class="leq">insp. La Nuit Trésor</span><span class="lcod">#1107</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1228" data-nome="Dream Brand 070 — Bleu de Chanel" data-preco="40.50" data-n="dream brand 070 — bleu de chanel insp. bleu de chanel 1228">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 070 — Bleu de Chanel"></span>
       <span class="lname">Dream Brand 070 — Bleu de Chanel<span class="leq">insp. Bleu de Chanel</span><span class="lcod">#1228</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1108" data-nome="Dream Brand 087 — Olympéa" data-preco="40.50" data-n="dream brand 087 — olympéa insp. olympéa 1108">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 087 — Olympéa"></span>
       <span class="lname">Dream Brand 087 — Olympéa<span class="leq">insp. Olympéa</span><span class="lcod">#1108</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1229" data-nome="Dream Brand 097 — Euphoria Fem" data-preco="45.00" data-n="dream brand 097 — euphoria fem insp. euphoria fem 1229">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 097 — Euphoria Fem"></span>
       <span class="lname">Dream Brand 097 — Euphoria Fem<span class="leq">insp. Euphoria Fem</span><span class="lcod">#1229</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1256" data-nome="Dream Brand 100 — Sauvage" data-preco="45.00" data-n="dream brand 100 — sauvage insp. sauvage 1256">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 100 — Sauvage"></span>
       <span class="lname">Dream Brand 100 — Sauvage<span class="leq">insp. Sauvage</span><span class="lcod">#1256</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1318" data-nome="Dream Brand 102 — 212 NYC Men" data-preco="45.00" data-n="dream brand 102 — 212 nyc men insp. 212 nyc men 1318">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 102 — 212 NYC Men"></span>
       <span class="lname">Dream Brand 102 — 212 NYC Men<span class="leq">insp. 212 NYC Men</span><span class="lcod">#1318</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1293" data-nome="Dream Brand 105 — Lady Million" data-preco="45.00" data-n="dream brand 105 — lady million insp. lady million 1293">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 105 — Lady Million"></span>
       <span class="lname">Dream Brand 105 — Lady Million<span class="leq">insp. Lady Million</span><span class="lcod">#1293</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1112" data-nome="Dream Brand 126 — Good Girl" data-preco="58.50" data-n="dream brand 126 — good girl insp. good girl 1112">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 126 — Good Girl"></span>
       <span class="lname">Dream Brand 126 — Good Girl<span class="leq">insp. Good Girl</span><span class="lcod">#1112</span></span>
-      <span class="lpreco">R$ 58,50</span>
+      <span class="lpreco"><span class="preco">R$ 58,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1328" data-nome="Dream Brand 136 — Scandal" data-preco="43.20" data-n="dream brand 136 — scandal insp. scandal 1328">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 136 — Scandal"></span>
       <span class="lname">Dream Brand 136 — Scandal<span class="leq">insp. Scandal</span><span class="lcod">#1328</span></span>
-      <span class="lpreco">R$ 43,20</span>
+      <span class="lpreco"><span class="preco">R$ 43,20</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1547" data-nome="Dream Brand 151 — Delina" data-preco="45.00" data-n="dream brand 151 — delina insp. delina 1547">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 151 — Delina"></span>
       <span class="lname">Dream Brand 151 — Delina<span class="leq">insp. Delina</span><span class="lcod">#1547</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1294" data-nome="Dream Brand 156 — 212 Sexy Men" data-preco="45.00" data-n="dream brand 156 — 212 sexy men insp. 212 sexy men 1294">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 156 — 212 Sexy Men"></span>
       <span class="lname">Dream Brand 156 — 212 Sexy Men<span class="leq">insp. 212 Sexy Men</span><span class="lcod">#1294</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1269" data-nome="Dream Brand 164 — Armani Code Men" data-preco="45.00" data-n="dream brand 164 — armani code men insp. armani code men 1269">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 164 — Armani Code Men"></span>
       <span class="lname">Dream Brand 164 — Armani Code Men<span class="leq">insp. Armani Code Men</span><span class="lcod">#1269</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1270" data-nome="Dream Brand 168 — Angel EDP" data-preco="45.00" data-n="dream brand 168 — angel edp insp. angel edp 1270">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 168 — Angel EDP"></span>
       <span class="lname">Dream Brand 168 — Angel EDP<span class="leq">insp. Angel EDP</span><span class="lcod">#1270</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1380" data-nome="Dream Brand 171 — Jean Paul Classique Fem" data-preco="45.00" data-n="dream brand 171 — jean paul classique fem insp. jean paul classique fem 1380">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 171 — Jean Paul Classique Fem"></span>
       <span class="lname">Dream Brand 171 — Jean Paul Classique Fem<span class="leq">insp. Jean Paul Classique Fem</span><span class="lcod">#1380</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1943" data-nome="Dream Brand 176 — Issey Miyake Fem" data-preco="45.00" data-n="dream brand 176 — issey miyake fem insp. issey miyake fem 1943">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 176 — Issey Miyake Fem"></span>
       <span class="lname">Dream Brand 176 — Issey Miyake Fem<span class="leq">insp. Issey Miyake Fem</span><span class="lcod">#1943</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1414" data-nome="Dream Brand 181 — Bad Boy" data-preco="58.50" data-n="dream brand 181 — bad boy insp. bad boy 1414">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 181 — Bad Boy"></span>
       <span class="lname">Dream Brand 181 — Bad Boy<span class="leq">insp. Bad Boy</span><span class="lcod">#1414</span></span>
-      <span class="lpreco">R$ 58,50</span>
+      <span class="lpreco"><span class="preco">R$ 58,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1446" data-nome="Dream Brand 214 — Invictus Black" data-preco="45.00" data-n="dream brand 214 — invictus black insp. invictus black 1446">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 214 — Invictus Black"></span>
       <span class="lname">Dream Brand 214 — Invictus Black<span class="leq">insp. Invictus Black</span><span class="lcod">#1446</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2097" data-nome="Dream Brand 225 — Victoria Bombshell" data-preco="45.00" data-n="dream brand 225 — victoria bombshell insp. victoria bombshell 2097">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 225 — Victoria Bombshell"></span>
       <span class="lname">Dream Brand 225 — Victoria Bombshell<span class="leq">insp. Victoria Bombshell</span><span class="lcod">#2097</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1419" data-nome="Dream Brand 238 — Idôle" data-preco="45.00" data-n="dream brand 238 — idôle insp. idôle 1419">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 238 — Idôle"></span>
       <span class="lname">Dream Brand 238 — Idôle<span class="leq">insp. Idôle</span><span class="lcod">#1419</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1423" data-nome="Dream Brand 240 — 212 NYC Fem" data-preco="45.00" data-n="dream brand 240 — 212 nyc fem insp. 212 nyc fem 1423">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 240 — 212 NYC Fem"></span>
       <span class="lname">Dream Brand 240 — 212 NYC Fem<span class="leq">insp. 212 NYC Fem</span><span class="lcod">#1423</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1451" data-nome="Dream Brand 265 — Versace Dylan Fem" data-preco="49.50" data-n="dream brand 265 — versace dylan fem insp. versace dylan fem 1451">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 265 — Versace Dylan Fem"></span>
       <span class="lname">Dream Brand 265 — Versace Dylan Fem<span class="leq">insp. Versace Dylan Fem</span><span class="lcod">#1451</span></span>
-      <span class="lpreco">R$ 49,50</span>
+      <span class="lpreco"><span class="preco">R$ 49,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1554" data-nome="Dream Brand 294 — L&#x27;Interdit Rouge" data-preco="45.00" data-n="dream brand 294 — l&#x27;interdit rouge insp. l&#x27;interdit rouge 1554">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 294 — L&#x27;Interdit Rouge"></span>
       <span class="lname">Dream Brand 294 — L&#x27;Interdit Rouge<span class="leq">insp. L&#x27;Interdit Rouge</span><span class="lcod">#1554</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2018" data-nome="Dream Brand 295 — Ariana Grande Cloud" data-preco="45.00" data-n="dream brand 295 — ariana grande cloud insp. ariana grande cloud 2018">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 295 — Ariana Grande Cloud"></span>
       <span class="lname">Dream Brand 295 — Ariana Grande Cloud<span class="leq">insp. Ariana Grande Cloud</span><span class="lcod">#2018</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1503" data-nome="Dream Brand 296 — Phantom" data-preco="45.00" data-n="dream brand 296 — phantom insp. phantom 1503">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 296 — Phantom"></span>
       <span class="lname">Dream Brand 296 — Phantom<span class="leq">insp. Phantom</span><span class="lcod">#1503</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2134" data-nome="Dream Brand 323 — Le Male Elixir" data-preco="45.00" data-n="dream brand 323 — le male elixir insp. le male elixir 2134">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 323 — Le Male Elixir"></span>
       <span class="lname">Dream Brand 323 — Le Male Elixir<span class="leq">insp. Le Male Elixir</span><span class="lcod">#2134</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1718" data-nome="Dream Brand 324 — La Belle" data-preco="40.50" data-n="dream brand 324 — la belle insp. la belle 1718">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 324 — La Belle"></span>
       <span class="lname">Dream Brand 324 — La Belle<span class="leq">insp. La Belle</span><span class="lcod">#1718</span></span>
-      <span class="lpreco">R$ 40,50</span>
+      <span class="lpreco"><span class="preco">R$ 40,50</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2135" data-nome="Dream Brand 325 — Le Male Le Parfum" data-preco="45.00" data-n="dream brand 325 — le male le parfum insp. le male le parfum 2135">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 325 — Le Male Le Parfum"></span>
       <span class="lname">Dream Brand 325 — Le Male Le Parfum<span class="leq">insp. Le Male Le Parfum</span><span class="lcod">#2135</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1604" data-nome="Dream Brand 340 — 212 Heroes Fem" data-preco="45.90" data-n="dream brand 340 — 212 heroes fem insp. 212 heroes fem 1604">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 340 — 212 Heroes Fem"></span>
       <span class="lname">Dream Brand 340 — 212 Heroes Fem<span class="leq">insp. 212 Heroes Fem</span><span class="lcod">#1604</span></span>
-      <span class="lpreco">R$ 45,90</span>
+      <span class="lpreco"><span class="preco">R$ 45,90</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1605" data-nome="Dream Brand 347 — 212 Heroes Men" data-preco="45.00" data-n="dream brand 347 — 212 heroes men insp. 212 heroes men 1605">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 347 — 212 Heroes Men"></span>
       <span class="lname">Dream Brand 347 — 212 Heroes Men<span class="leq">insp. 212 Heroes Men</span><span class="lcod">#1605</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2242" data-nome="Dream Brand 348 — Delina La Rosée" data-preco="45.00" data-n="dream brand 348 — delina la rosée insp. delina la rosée 2242">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 348 — Delina La Rosée"></span>
       <span class="lname">Dream Brand 348 — Delina La Rosée<span class="leq">insp. Delina La Rosée</span><span class="lcod">#2242</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1592" data-nome="Dream Brand 351 — Dylan Turquoise" data-preco="45.00" data-n="dream brand 351 — dylan turquoise insp. dylan turquoise 1592">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 351 — Dylan Turquoise"></span>
       <span class="lname">Dream Brand 351 — Dylan Turquoise<span class="leq">insp. Dylan Turquoise</span><span class="lcod">#1592</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2159" data-nome="Dream Brand 356 — J&#x27;adore L&#x27;Or" data-preco="45.00" data-n="dream brand 356 — j&#x27;adore l&#x27;or insp. j&#x27;adore l&#x27;or 2159">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 356 — J&#x27;adore L&#x27;Or"></span>
       <span class="lname">Dream Brand 356 — J&#x27;adore L&#x27;Or<span class="leq">insp. J&#x27;adore L&#x27;Or</span><span class="lcod">#2159</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1639" data-nome="Dream Brand 361 — Libre Intense" data-preco="45.00" data-n="dream brand 361 — libre intense insp. libre intense 1639">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 361 — Libre Intense"></span>
       <span class="lname">Dream Brand 361 — Libre Intense<span class="leq">insp. Libre Intense</span><span class="lcod">#1639</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1624" data-nome="Dream Brand 365 — Fame" data-preco="45.00" data-n="dream brand 365 — fame insp. fame 1624">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 365 — Fame"></span>
       <span class="lname">Dream Brand 365 — Fame<span class="leq">insp. Fame</span><span class="lcod">#1624</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1973" data-nome="Dream Brand 367 — Valaya" data-preco="45.00" data-n="dream brand 367 — valaya insp. valaya 1973">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 367 — Valaya"></span>
       <span class="lname">Dream Brand 367 — Valaya<span class="leq">insp. Valaya</span><span class="lcod">#1973</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1848" data-nome="Dream Brand 370 — Versace Purple" data-preco="53.00" data-n="dream brand 370 — versace purple insp. versace purple 1848">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 370 — Versace Purple"></span>
       <span class="lname">Dream Brand 370 — Versace Purple<span class="leq">insp. Versace Purple</span><span class="lcod">#1848</span></span>
-      <span class="lpreco">R$ 53,00</span>
+      <span class="lpreco"><span class="preco">R$ 53,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1906" data-nome="Dream Brand 382 — L&#x27;Interdit" data-preco="45.00" data-n="dream brand 382 — l&#x27;interdit insp. l&#x27;interdit 1906">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 382 — L&#x27;Interdit"></span>
       <span class="lname">Dream Brand 382 — L&#x27;Interdit<span class="leq">insp. L&#x27;Interdit</span><span class="lcod">#1906</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1878" data-nome="Dream Brand 387 — Azzaro Wanted Parfum" data-preco="45.00" data-n="dream brand 387 — azzaro wanted parfum insp. azzaro wanted parfum 1878">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 387 — Azzaro Wanted Parfum"></span>
       <span class="lname">Dream Brand 387 — Azzaro Wanted Parfum<span class="leq">insp. Azzaro Wanted Parfum</span><span class="lcod">#1878</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1974" data-nome="Dream Brand 391 — Valentino Born in Roma" data-preco="45.00" data-n="dream brand 391 — valentino born in roma insp. valentino born in roma 1974">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 391 — Valentino Born in Roma"></span>
       <span class="lname">Dream Brand 391 — Valentino Born in Roma<span class="leq">insp. Valentino Born in Roma</span><span class="lcod">#1974</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1819" data-nome="Dream Brand 415 — Fame Parfum (preto)" data-preco="47.70" data-n="dream brand 415 — fame parfum (preto) insp. fame parfum (preto) 1819">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 415 — Fame Parfum (preto)"></span>
       <span class="lname">Dream Brand 415 — Fame Parfum (preto)<span class="leq">insp. Fame Parfum (preto)</span><span class="lcod">#1819</span></span>
-      <span class="lpreco">R$ 47,70</span>
+      <span class="lpreco"><span class="preco">R$ 47,70</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2063" data-nome="Dream Brand 435 — Burberry Goddess" data-preco="45.00" data-n="dream brand 435 — burberry goddess insp. burberry goddess 2063">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 435 — Burberry Goddess"></span>
       <span class="lname">Dream Brand 435 — Burberry Goddess<span class="leq">insp. Burberry Goddess</span><span class="lcod">#2063</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2127" data-nome="Dream Brand 445 — Prada Paradoxe" data-preco="45.00" data-n="dream brand 445 — prada paradoxe insp. prada paradoxe 2127">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 445 — Prada Paradoxe"></span>
       <span class="lname">Dream Brand 445 — Prada Paradoxe<span class="leq">insp. Prada Paradoxe</span><span class="lcod">#2127</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1532" data-nome="Dream Brand 106 — Versace Pour Homme" data-preco="45.00" data-n="dream brand 106 — versace pour homme insp. versace pour homme 1532">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Dream Brand 106 — Versace Pour Homme"></span>
       <span class="lname">Dream Brand 106 — Versace Pour Homme<span class="leq">insp. Versace Pour Homme</span><span class="lcod">#1532</span></span>
-      <span class="lpreco">R$ 45,00</span>
+      <span class="lpreco"><span class="preco">R$ 45,00</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div></div></div>
     </section><section id="arabic_insp">
       <h2 class="sec-h"><i class="ti ti-droplet"></i>Inspirações Arabic 25ml<span class="qt">4 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="lista"><div class="li" data-cod="2093" data-nome="Arabic 25ml — inspiração Sabah" data-preco="50.40" data-n="arabic 25ml — inspiração sabah insp. sabah 2093">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Arabic 25ml — inspiração Sabah"></span>
       <span class="lname">Arabic 25ml — inspiração Sabah<span class="leq">insp. Sabah</span><span class="lcod">#2093</span></span>
-      <span class="lpreco">R$ 50,40</span>
+      <span class="lpreco"><span class="preco">R$ 50,40</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1969" data-nome="Arabic 25ml — Fakhar Rose" data-preco="50.40" data-n="arabic 25ml — fakhar rose insp. fakhar rose 1969">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Arabic 25ml — Fakhar Rose"></span>
       <span class="lname">Arabic 25ml — Fakhar Rose<span class="leq">insp. Fakhar Rose</span><span class="lcod">#1969</span></span>
-      <span class="lpreco">R$ 50,40</span>
+      <span class="lpreco"><span class="preco">R$ 50,40</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="2039" data-nome="Arabic 25ml — Tharwad Gold" data-preco="50.40" data-n="arabic 25ml — tharwad gold insp. tharwad gold 2039">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Arabic 25ml — Tharwad Gold"></span>
       <span class="lname">Arabic 25ml — Tharwad Gold<span class="leq">insp. Tharwad Gold</span><span class="lcod">#2039</span></span>
-      <span class="lpreco">R$ 50,40</span>
+      <span class="lpreco"><span class="preco">R$ 50,40</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div><div class="li" data-cod="1970" data-nome="Arabic 25ml — Yara Rosa" data-preco="48.60" data-n="arabic 25ml — yara rosa insp. yara rosa 1970">
       <span class="lthumb"><img loading="lazy" decoding="async" src="img/DB.webp" alt="Arabic 25ml — Yara Rosa"></span>
       <span class="lname">Arabic 25ml — Yara Rosa<span class="leq">insp. Yara Rosa</span><span class="lcod">#1970</span></span>
-      <span class="lpreco">R$ 48,60</span>
+      <span class="lpreco"><span class="preco">R$ 48,60</span></span>
       <div class="addwrap mini"><button class="addbtn" type="button" data-add><i class="ti ti-plus"></i></button><div class="qtybox"><button type="button" data-dec aria-label="menos"><i class="ti ti-minus"></i></button><span data-qty>1</span><button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div></div>
     </div></div></div>
     </section><section id="cosm_base">
       <h2 class="sec-h"><i class="ti ti-palette"></i>Bases<span class="qt">1 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="509" data-nome="Base Milani Nº 03" data-preco="79.20" data-n="base milani nº 03  509">
       <div class="media"><img loading="lazy" decoding="async" src="img/509.webp" alt="Base Milani Nº 03"></div>
       <div class="info">
@@ -1060,6 +1154,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="cosm_vs_lot">
       <h2 class="sec-h"><i class="ti ti-bottle"></i>Hidratantes Victoria&#x27;s Secret<span class="qt">5 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="898" data-nome="Body Lotion VS Aqua Kiss (emb. nova)" data-preco="105.30" data-n="body lotion vs aqua kiss (emb. nova)  898">
       <div class="media"><img loading="lazy" decoding="async" src="img/898.webp" alt="Body Lotion VS Aqua Kiss (emb. nova)"><span class="badge">Emb. nova</span></div>
       <div class="info">
@@ -1098,6 +1193,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="cosm_vs_spl">
       <h2 class="sec-h"><i class="ti ti-spray"></i>Body Splash Victoria&#x27;s Secret<span class="qt">13 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="786" data-nome="Body Splash VS Aqua Kiss" data-preco="105.30" data-n="body splash vs aqua kiss  786">
       <div class="media"><img loading="lazy" decoding="async" src="img/786.webp" alt="Body Splash VS Aqua Kiss"></div>
       <div class="info">
@@ -1192,6 +1288,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="cosm_nac">
       <h2 class="sec-h"><i class="ti ti-droplet"></i>Cremes &amp; Splash nacionais<span class="qt">6 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="1253" data-nome="Creme Dream Brand 168 Angel 200ml" data-preco="39.60" data-n="creme dream brand 168 angel 200ml insp. angel 1253">
       <div class="media"><img loading="lazy" decoding="async" src="img/1253.webp" alt="Creme Dream Brand 168 Angel 200ml"></div>
       <div class="info">
@@ -1237,6 +1334,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="cosm_mist">
       <h2 class="sec-h"><i class="ti ti-air-balloon"></i>Body Mist Maison<span class="qt">2 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="2204" data-nome="Maison Alhambra Body Mist Delilah 250ml" data-preco="65.70" data-n="maison alhambra body mist delilah 250ml insp. delina 2204">
       <div class="media"><img loading="lazy" decoding="async" src="img/2204.webp" alt="Maison Alhambra Body Mist Delilah 250ml"></div>
       <div class="info">
@@ -1254,6 +1352,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="cosm_cabelo">
       <h2 class="sec-h"><i class="ti ti-wind"></i>Cabelo &amp; Tratamento<span class="qt">4 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="1019" data-nome="Joico Color Therapy Máscara 500g" data-preco="240.30" data-n="joico color therapy máscara 500g  1019">
       <div class="media"><img loading="lazy" decoding="async" src="img/1019.webp" alt="Joico Color Therapy Máscara 500g"></div>
       <div class="info">
@@ -1285,6 +1384,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="cosm_corpo">
       <h2 class="sec-h"><i class="ti ti-leaf"></i>Corpo &amp; Skincare<span class="qt">1 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="1103" data-nome="St. Ives Creme Corporal Colágeno &amp; Elastina 532ml" data-preco="45.00" data-n="st. ives creme corporal colágeno &amp; elastina 532ml  1103">
       <div class="media"><img loading="lazy" decoding="async" src="img/1103.webp" alt="St. Ives Creme Corporal Colágeno &amp; Elastina 532ml"></div>
       <div class="info">
@@ -1295,6 +1395,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="acess_vela">
       <h2 class="sec-h"><i class="ti ti-flame"></i>Velas Perfumadas<span class="qt">2 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="B01" data-nome="Vela Perfumada Marc Jacobs Perfect 70g" data-preco="90.00" data-n="vela perfumada marc jacobs perfect 70g  B01">
       <div class="media"><img loading="lazy" decoding="async" src="img/B01.webp" alt="Vela Perfumada Marc Jacobs Perfect 70g"><span class="badge">Consultar</span></div>
       <div class="info">
@@ -1312,6 +1413,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="acess_corpo">
       <h2 class="sec-h"><i class="ti ti-bath"></i>Géis &amp; Hidratantes<span class="qt">11 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="B12" data-nome="Gel de Banho Jo Malone 30ml" data-preco="89.00" data-n="gel de banho jo malone 30ml  B12">
       <div class="media"><img loading="lazy" decoding="async" src="img/B12.webp" alt="Gel de Banho Jo Malone 30ml"><span class="badge">Consultar</span></div>
       <div class="info">
@@ -1392,6 +1494,7 @@ body.has-cart .top{bottom:80px}
     </article></div></div>
     </section><section id="acess_bolsa">
       <h2 class="sec-h"><i class="ti ti-briefcase"></i>Necessaires &amp; Bolsas<span class="qt">10 itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      
       <div class="sec-body"><div class="grid"><article class="card" data-cod="B03" data-nome="Carteira Chloé (tam. M)" data-preco="65.00" data-n="carteira chloé (tam. m)  B03">
       <div class="media"><img loading="lazy" decoding="async" src="img/B03.webp" alt="Carteira Chloé (tam. M)"><span class="badge">Consultar</span></div>
       <div class="info">

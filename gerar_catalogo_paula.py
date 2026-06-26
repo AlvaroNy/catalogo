@@ -29,6 +29,7 @@ ATUALIZADO = "24/06/2026"
 # CATEGORIAS (ordem de exibicao)
 # ----------------------------------------------------------------------------
 CATEGORIAS = [
+    ("promo",        "Promoção da Copa",           "ti-ball-football",  "card"),
     ("perf_import",  "Perfumes importados",        "ti-flask",          "card"),
     ("perf_arabe",   "Perfumes árabes",            "ti-moon-stars",     "card"),
     ("perf_tester",  "Testers",                    "ti-test-pipe",      "card"),
@@ -50,8 +51,21 @@ CATEGORIAS = [
 # PRODUTOS  (codigo, nome, preco, categoria, query_imagem, equivalencia, badge)
 # ----------------------------------------------------------------------------
 P = []
-def add(cod, nome, preco, cat, q="", eq="", badge=""):
-    P.append(dict(cod=cod, nome=nome, preco=preco, cat=cat, q=q or nome, eq=eq, badge=badge))
+def add(cod, nome, preco, cat, q="", eq="", badge="", de=0):
+    # de = preco "de" (antigo). Se de > preco, vira oferta (mostra riscado + % off).
+    P.append(dict(cod=cod, nome=nome, preco=preco, cat=cat, q=q or nome, eq=eq, badge=badge, de=de))
+
+# --- PROMOCAO DA COPA (estoque limitado) ---
+add("CP1", "Bad Boy Cobalt 150ml EDP",                 499.00, "promo", "Carolina Herrera Bad Boy Cobalt 150ml eau de parfum", de=570.00)
+add("CP2", "Bad Boy Le Parfum 50ml",                   299.00, "promo", "Carolina Herrera Bad Boy Le Parfum 50ml", de=360.00)
+add("CP3", "Bad Boy Sparkling Ice 100ml",              350.00, "promo", "Carolina Herrera Bad Boy Sparkling Ice 100ml", de=410.00)
+add("CP4", "Black XS Men 50ml EDT",                    259.00, "promo", "Paco Rabanne Black XS for him 50ml eau de toilette", de=299.00)
+add("CP5", "Jean Paul Gaultier Divine Le Parfum 100ml",499.00, "promo", "Jean Paul Gaultier Divine Le Parfum 100ml", de=590.00)
+add("CP6", "Good Girl Légère 80ml EDP",                430.00, "promo", "Carolina Herrera Good Girl Legere 80ml eau de parfum", de=510.00)
+add("CP7", "Good Girl Sparkling Ice 80ml EDP",         430.00, "promo", "Carolina Herrera Good Girl 80ml eau de parfum", eq="mesmo cheiro do tradicional · edição colecionador", de=500.00)
+add("CP8", "One Million 200ml EDT",                    480.00, "promo", "Paco Rabanne One Million 200ml eau de toilette", de=520.00)
+add("CP9", "Armani Si Intense 100ml EDP",              490.00, "promo", "Giorgio Armani Si Intense 100ml eau de parfum", de=560.00)
+add("CP10","Good Girl Very Glam 30ml EDP",             259.00, "promo", "Carolina Herrera Good Girl Very Glam 30ml eau de parfum", de=299.00)
 
 # --- Perfumes importados ---
 add("142", "Animale For Men 100ml EDT",              175.50, "perf_import", "Animale for men eau de toilette 100ml")
@@ -301,6 +315,15 @@ def add_ctrl(mini=False):
             f'<button type="button" data-inc aria-label="mais"><i class="ti ti-plus"></i></button></div>'
             f'</div>')
 
+def is_promo(p):
+    return p["de"] and p["de"] > p["preco"]
+
+def price_html(p):
+    if is_promo(p):
+        return (f'<span class="precobox"><span class="preco-de">{brl(p["de"])}</span>'
+                f'<span class="preco preco-promo">{brl(p["preco"])}</span></span>')
+    return f'<span class="preco">{brl(p["preco"])}</span>'
+
 def card_html(p):
     src = img_data(p["cod"], p["cat"])
     if src:
@@ -308,13 +331,20 @@ def card_html(p):
     else:
         ini = esc(p["nome"][:1].upper())
         media = f'<div class="ph"><span>{ini}</span></div>'
-    badge = f'<span class="badge">{esc(p["badge"])}</span>' if p["badge"] else ""
+    if is_promo(p):
+        pct = round((1 - p["preco"] / p["de"]) * 100)
+        badge = f'<span class="badge badge-off">-{pct}%</span>'
+    elif p["badge"]:
+        badge = f'<span class="badge">{esc(p["badge"])}</span>'
+    else:
+        badge = ""
+    cls = "card promo" if is_promo(p) else "card"
     eq = f'<p class="eq">{esc(p["eq"])}</p>' if p["eq"] else ""
-    return f'''<article class="card" {data_attrs(p)}>
+    return f'''<article class="{cls}" {data_attrs(p)}>
       <div class="media">{media}{badge}</div>
       <div class="info">
         <p class="nome">{esc(p['nome'])}</p>{eq}
-        <div class="row"><span class="cod">#{esc(p['cod'])}</span><span class="preco">{brl(p['preco'])}</span></div>
+        <div class="row"><span class="cod">#{esc(p['cod'])}</span>{price_html(p)}</div>
         {add_ctrl(False)}
       </div>
     </article>'''
@@ -326,7 +356,7 @@ def lista_html(p):
     return f'''<div class="li" {data_attrs(p)}>
       <span class="lthumb">{thumb}</span>
       <span class="lname">{esc(p['nome'])}{eq}<span class="lcod">#{esc(p['cod'])}</span></span>
-      <span class="lpreco">{brl(p['preco'])}</span>
+      <span class="lpreco">{price_html(p)}</span>
       {add_ctrl(True)}
     </div>'''
 
@@ -340,8 +370,11 @@ for key, titulo, icon, modo in CATEGORIAS:
         corpo = '<div class="lista">' + "".join(lista_html(p) for p in itens) + '</div>'
     else:
         corpo = '<div class="grid">' + "".join(card_html(p) for p in itens) + '</div>'
+    nota = ('<p class="sec-note"><i class="ti ti-clock-hour-4"></i>Estoque limitado — aproveite enquanto durar!</p>'
+            if key == "promo" else "")
     secoes.append(f'''<section id="{key}">
       <h2 class="sec-h"><i class="ti {icon}"></i>{esc(titulo)}<span class="qt">{len(itens)} itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      {nota}
       <div class="sec-body">{corpo}</div>
     </section>''')
 
@@ -405,6 +438,20 @@ h2 .qt{{margin-left:auto;font-family:'Segoe UI',sans-serif;font-size:12px;font-w
 .row{{display:flex;align-items:baseline;justify-content:space-between;margin-top:auto;gap:6px}}
 .cod{{font-size:11px;color:var(--mut)}}
 .preco{{font-family:Georgia,serif;font-size:18px;font-weight:700;color:var(--wine)}}
+/* PROMOCAO DA COPA */
+.sec-note{{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#d0341b;font-weight:600;margin-top:8px}}
+.sec-note i{{font-size:15px}}
+#promo h2{{color:#0b6b35;border-bottom-color:#d8edcf}}
+#promo h2 i{{color:#0b8a3e}}
+#promo .card{{border:2px solid var(--gold);background:linear-gradient(180deg,#fffdf5,#fff);box-shadow:0 4px 14px rgba(199,154,62,.22)}}
+#promo .card:hover{{box-shadow:0 10px 24px rgba(199,154,62,.32)}}
+.precobox{{display:inline-flex;flex-direction:column;align-items:flex-end;line-height:1.05}}
+.preco-de{{font-family:'Segoe UI',sans-serif;font-size:12px;color:var(--mut);text-decoration:line-through}}
+.preco-promo{{color:#0b8a3e}}
+.badge-off{{background:#e0322a;color:#fff;font-size:11px}}
+.nav a[href="#promo"]{{background:linear-gradient(135deg,#fff6e0,#ffe6bd);border-color:var(--gold);color:#8a5a00;font-weight:700}}
+.nav a[href="#promo"] i{{color:#d68a00}}
+.nav a[href="#promo"] b{{background:#ffe1b0;color:#8a5a00}}
 /* ADICIONAR / STEPPER */
 .addwrap{{margin-top:4px}}
 .addbtn{{display:flex;width:100%;align-items:center;justify-content:center;gap:6px;background:#25d366;color:#063b1c;font-size:12.5px;font-weight:600;padding:11px 8px;min-height:44px;border:0;border-radius:9px;cursor:pointer;transition:.12s}}
