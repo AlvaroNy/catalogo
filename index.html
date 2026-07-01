@@ -199,6 +199,29 @@ body.has-cart .top{bottom:80px}
 .lb-x{position:absolute;top:14px;right:16px;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .lb-hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:rgba(255,255,255,.65);font-size:12px;pointer-events:none;transition:opacity .4s}
 .lb.zoomed .lb-hint{opacity:0}
+/* cartao de detalhes do perfume */
+.lb-det{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:4;border:1px solid var(--gold);border-radius:999px;background:rgba(0,0,0,.4);color:#fff;font-size:14px;padding:9px 18px;display:none;align-items:center;gap:7px;cursor:pointer;white-space:nowrap}
+.lb.has-ficha .lb-det{display:flex}
+.lb.zoomed .lb-det{opacity:0;pointer-events:none}
+.lb-dots{position:absolute;bottom:60px;left:0;right:0;display:none;justify-content:center;gap:7px;z-index:4}
+.lb.has-ficha:not(.zoomed) .lb-dots{display:flex}
+.lb-dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35)}
+.lb-dots span.on{background:#fff}
+.lb-card{position:absolute;inset:0;padding:64px 16px 88px;display:none;overflow:auto;z-index:3}
+.lb.showcard .lb-card{display:block}
+.lb.showcard img{visibility:hidden}
+.lb.showcard .lb-hint{opacity:0}
+.fcard{background:#fff;border-radius:14px;padding:18px 16px;max-width:360px;margin:0 auto}
+.fcard h3{font-family:Georgia,serif;font-size:19px;color:var(--ink);margin:0 0 2px;font-weight:600;line-height:1.25}
+.fcard .fsub{font-size:12px;color:var(--mut);margin:0 0 14px}
+.ffld{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}
+.ffld:last-child{margin-bottom:0}
+.flbl{font-size:12px;color:#a06a2a;font-weight:600;display:flex;align-items:center;gap:6px}
+.flbl i{font-size:15px}
+.fchips{display:flex;flex-wrap:wrap;gap:6px}
+.fchips span{font-size:13px;background:var(--rose-l);color:var(--wine);padding:4px 11px;border-radius:999px}
+.fchips span.cg{background:var(--wine);color:#fff}
+.fchips span.ci{background:#f3e3bf;color:#8a5a00}
 </style>
 </head>
 <body>
@@ -1457,11 +1480,15 @@ body.has-cart .top{bottom:80px}
 <div class="lb" id="lb">
   <button class="lb-x" id="lbX" type="button" aria-label="Fechar">&times;</button>
   <img id="lbImg" src="" alt="" draggable="false">
+  <div class="lb-card" id="lbCard"></div>
   <div class="lb-hint">Pinça ou toque duplo para dar zoom</div>
+  <div class="lb-dots"><span id="lbDot0" class="on"></span><span id="lbDot1"></span></div>
+  <button class="lb-det" id="lbDet" type="button"><i class="ti ti-info-circle"></i> Detalhes</button>
 </div>
 
 <script>
 const WA="5537991716781", MARCA_PED="Alvaro Nayder";
+const DET={"32": {"g": "Masculino", "fr": ["Cítrico", "Amadeirado", "Aromático"], "in": "Médio", "id": ["Dia a dia", "Trabalho"], "pu": ["Jovens", "Adultos"]}, "38": {"g": "Feminino", "fr": ["Floral", "Cítrico", "Amadeirado"], "in": "Marcante", "id": ["Dia a dia", "Trabalho", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "44": {"g": "Feminino", "fr": ["Floral", "Frutado"], "in": "Médio", "id": ["Dia a dia", "Trabalho", "Datas especiais"], "pu": ["Adultos", "Maduros"]}, "527": {"g": "Feminino", "fr": ["Doce", "Floral"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "132": {"g": "Feminino", "fr": ["Doce", "Floral", "Frutado"], "in": "Marcante", "id": ["Dia a dia", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "80": {"g": "Masculino", "fr": ["Fresco", "Cítrico", "Amadeirado"], "in": "Médio", "id": ["Dia a dia", "Trabalho"], "pu": ["Jovens"]}, "78": {"g": "Feminino", "fr": ["Doce", "Floral", "Frutado"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "811": {"g": "Masculino", "fr": ["Cítrico", "Aromático", "Amadeirado"], "in": "Médio", "id": ["Dia a dia", "Trabalho"], "pu": ["Versátil"]}, "1149": {"g": "Masculino", "fr": ["Frutado", "Amadeirado", "Cítrico"], "in": "Marcante", "id": ["Dia a dia", "Noite"], "pu": ["Jovens", "Adultos"]}, "1756": {"g": "Masculino", "fr": ["Especiado", "Doce", "Amadeirado"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1852": {"g": "Feminino", "fr": ["Floral", "Oriental/Âmbar"], "in": "Médio", "id": ["Dia a dia", "Noite"], "pu": ["Jovens", "Adultos"]}, "1586": {"g": "Feminino", "fr": ["Floral", "Frutado", "Almiscarado"], "in": "Médio", "id": ["Dia a dia", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "2006": {"g": "Masculino", "fr": ["Amadeirado", "Aromático", "Cítrico"], "in": "Médio", "id": ["Dia a dia", "Trabalho", "Noite"], "pu": ["Adultos", "Maduros"]}, "1890": {"g": "Masculino", "fr": ["Fresco", "Especiado", "Amadeirado"], "in": "Marcante", "id": ["Dia a dia", "Noite"], "pu": ["Jovens", "Adultos"]}, "680": {"g": "Feminino", "fr": ["Doce", "Floral", "Oriental/Âmbar"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1109": {"g": "Masculino", "fr": ["Especiado", "Doce", "Amadeirado"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1111": {"g": "Masculino", "fr": ["Especiado", "Amadeirado"], "in": "Médio", "id": ["Noite", "Datas especiais"], "pu": ["Jovens"]}, "1114": {"g": "Feminino", "fr": ["Doce", "Floral", "Frutado"], "in": "Marcante", "id": ["Dia a dia", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1110": {"g": "Feminino", "fr": ["Floral", "Cítrico", "Amadeirado"], "in": "Marcante", "id": ["Dia a dia", "Trabalho", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1108": {"g": "Feminino", "fr": ["Doce", "Floral", "Oriental/Âmbar"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1256": {"g": "Masculino", "fr": ["Fresco", "Especiado", "Amadeirado"], "in": "Marcante", "id": ["Dia a dia", "Noite"], "pu": ["Jovens", "Adultos"]}, "1293": {"g": "Feminino", "fr": ["Doce", "Floral", "Frutado"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1112": {"g": "Feminino", "fr": ["Doce", "Floral", "Amadeirado"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1328": {"g": "Feminino", "fr": ["Doce", "Floral"], "in": "Marcante", "id": ["Noite", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1547": {"g": "Feminino", "fr": ["Floral", "Frutado", "Almiscarado"], "in": "Médio", "id": ["Dia a dia", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "1414": {"g": "Masculino", "fr": ["Especiado", "Amadeirado", "Doce"], "in": "Médio", "id": ["Dia a dia", "Noite"], "pu": ["Jovens"]}, "2242": {"g": "Feminino", "fr": ["Floral", "Frutado", "Almiscarado"], "in": "Médio", "id": ["Dia a dia", "Datas especiais"], "pu": ["Jovens", "Adultos"]}, "2127": {"g": "Feminino", "fr": ["Floral", "Oriental/Âmbar"], "in": "Médio", "id": ["Dia a dia", "Noite"], "pu": ["Jovens", "Adultos"]}, "1532": {"g": "Masculino", "fr": ["Cítrico", "Aromático", "Amadeirado"], "in": "Médio", "id": ["Dia a dia", "Trabalho"], "pu": ["Versátil"]}};
 const BRL=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
 const fmt=v=>BRL.format(v);
 const wrap=document.querySelector('.wrap');
@@ -1557,8 +1584,32 @@ document.getElementById('cpGo').onclick=fechar;
 /* LIGHTBOX estilo galeria: toque na foto abre; pinca/toque-duplo da zoom (centrado),
    arrasta com limites; fecha SO no X. */
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbX=document.getElementById('lbX');
+const lbCard=document.getElementById('lbCard'),lbDet=document.getElementById('lbDet');
+const lbDot0=document.getElementById('lbDot0'),lbDot1=document.getElementById('lbDot1');
 const MINS=1,MAXS=4,DTS=2.6;
-let s=1,tx=0,ty=0,base=null;
+let s=1,tx=0,ty=0,base=null,curCod=null;
+const FLAB={g:'Gênero',fr:'Fragância',in:'Intensidade',id:'Ideal para',pu:'Público'};
+const FICO={g:'ti-venus',fr:'ti-flask',in:'ti-flame',id:'ti-clock-hour-3',pu:'ti-users'};
+function esc2(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function chips(arr,cls){return arr.map(v=>'<span'+(cls?' class="'+cls+'"':'')+'>'+esc2(v)+'</span>').join('');}
+function buildCard(cod,nome){
+  const d=DET[cod]; if(!d)return false;
+  const gico=d.g==='Feminino'?'ti-venus':d.g==='Masculino'?'ti-mars':'ti-gender-bigender';
+  let h='<div class="fcard"><h3>'+esc2(nome||'')+'</h3><p class="fsub">#'+esc2(cod)+'</p>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti '+gico+'"></i> Gênero</span><div class="fchips">'+chips([d.g],'cg')+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-flask"></i> Fragância</span><div class="fchips">'+chips(d.fr)+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-flame"></i> Intensidade</span><div class="fchips">'+chips([d.in],'ci')+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-clock-hour-3"></i> Ideal para</span><div class="fchips">'+chips(d.id)+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-users"></i> Público</span><div class="fchips">'+chips(d.pu)+'</div></div>';
+  h+='</div>';
+  lbCard.innerHTML=h; return true;
+}
+function showCard(on){
+  lb.classList.toggle('showcard',on);
+  lbDot0.classList.toggle('on',!on);lbDot1.classList.toggle('on',on);
+  lbDet.innerHTML=on?'<i class="ti ti-photo"></i> Foto':'<i class="ti ti-info-circle"></i> Detalhes';
+  if(on){s=1;tx=0;ty=0;applyT(false);}
+}
 function applyT(anim){lbImg.style.transition=anim?'transform .26s cubic-bezier(.22,.61,.36,1)':'none';lbImg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';lb.classList.toggle('zoomed',s>1.01);}
 function ensureBase(){const r=lbImg.getBoundingClientRect();base={l:r.left-tx,t:r.top-ty,w:r.width/s,h:r.height/s};}
 function clampT(){
@@ -1571,27 +1622,33 @@ function zoomAt(px,py,ns){
   const cx=(px-base.l-tx)/s,cy=(py-base.t-ty)/s;
   s=ns;tx=px-base.l-cx*s;ty=py-base.t-cy*s;
 }
-function openLB(src,alt){
-  s=1;tx=0;ty=0;base=null;lbImg.alt=alt||'';
+function openLB(src,alt,cod){
+  s=1;tx=0;ty=0;base=null;lbImg.alt=alt||'';curCod=cod||null;
   lbImg.style.transition='none';lbImg.style.transform='';
   lbImg.src=src;
-  lb.classList.add('open');lb.classList.remove('zoomed');document.body.style.overflow='hidden';
+  const temFicha=cod&&buildCard(cod,alt);
+  lb.classList.remove('zoomed','showcard');
+  lb.classList.toggle('has-ficha',!!temFicha);
+  showCard(false);
+  lb.classList.add('open');document.body.style.overflow='hidden';
   const init=()=>{ensureBase();applyT(false);};
   if(lbImg.complete&&lbImg.naturalWidth)requestAnimationFrame(init);else lbImg.onload=()=>requestAnimationFrame(init);
 }
-function closeLB(){lb.classList.remove('open','zoomed');document.body.style.overflow='';s=1;tx=0;ty=0;base=null;}
+function closeLB(){lb.classList.remove('open','zoomed','showcard','has-ficha');document.body.style.overflow='';s=1;tx=0;ty=0;base=null;curCod=null;}
 function dist(t){return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);}
 function mid(t){return{x:(t[0].clientX+t[1].clientX)/2,y:(t[0].clientY+t[1].clientY)/2};}
 
 document.addEventListener('click',e=>{
   const im=e.target.closest('.media img,.lthumb img');
-  if(im){e.preventDefault();openLB(im.currentSrc||im.src,im.alt);}
+  if(im){e.preventDefault();const c=im.closest('[data-cod]');openLB(im.currentSrc||im.src,im.alt,c&&c.dataset.cod);}
 });
 lbX.onclick=e=>{e.stopPropagation();closeLB();};
+lbDet.onclick=e=>{e.stopPropagation();showCard(!lb.classList.contains('showcard'));};
 
 /* --- toque --- */
 let pinch=false,panT=false,sStart=1,dStart=0,plx=0,ply=0,lastTap=0;
 lb.addEventListener('touchstart',e=>{
+  if(lb.classList.contains('showcard'))return;
   if(!base)ensureBase();
   if(e.touches.length===2){pinch=true;panT=false;sStart=s;dStart=dist(e.touches);applyT(false);}
   else if(e.touches.length===1){
@@ -1604,6 +1661,7 @@ lb.addEventListener('touchstart',e=>{
   }
 },{passive:false});
 lb.addEventListener('touchmove',e=>{
+  if(lb.classList.contains('showcard'))return;
   if(pinch&&e.touches.length===2){
     e.preventDefault();const m=mid(e.touches);
     zoomAt(m.x,m.y,sStart*dist(e.touches)/dStart);applyT(false);
@@ -1618,10 +1676,10 @@ lb.addEventListener('touchend',e=>{
 });
 
 /* --- desktop --- */
-lb.addEventListener('dblclick',e=>{if(!base)ensureBase();if(s>1.01){s=1;}else zoomAt(e.clientX,e.clientY,DTS);clampT();applyT(true);});
-lb.addEventListener('wheel',e=>{e.preventDefault();if(!base)ensureBase();zoomAt(e.clientX,e.clientY,s*(e.deltaY<0?1.18:.85));clampT();applyT(false);},{passive:false});
+lb.addEventListener('dblclick',e=>{if(lb.classList.contains('showcard'))return;if(!base)ensureBase();if(s>1.01){s=1;}else zoomAt(e.clientX,e.clientY,DTS);clampT();applyT(true);});
+lb.addEventListener('wheel',e=>{if(lb.classList.contains('showcard'))return;e.preventDefault();if(!base)ensureBase();zoomAt(e.clientX,e.clientY,s*(e.deltaY<0?1.18:.85));clampT();applyT(false);},{passive:false});
 let md=false,mlx=0,mly=0;
-lb.addEventListener('mousedown',e=>{if(s>1){md=true;mlx=e.clientX;mly=e.clientY;applyT(false);e.preventDefault();}});
+lb.addEventListener('mousedown',e=>{if(lb.classList.contains('showcard'))return;if(s>1){md=true;mlx=e.clientX;mly=e.clientY;applyT(false);e.preventDefault();}});
 addEventListener('mousemove',e=>{if(md){tx+=e.clientX-mlx;ty+=e.clientY-mly;mlx=e.clientX;mly=e.clientY;applyT(false);}});
 addEventListener('mouseup',()=>{if(md){md=false;clampT();applyT(true);}});
 addEventListener('resize',()=>{if(lb.classList.contains('open')){base=null;s=1;tx=0;ty=0;requestAnimationFrame(()=>{ensureBase();applyT(false);});}});

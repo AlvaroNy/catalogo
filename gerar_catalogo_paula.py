@@ -5,7 +5,7 @@ Le as fotos de img/<codigo>.jpg (se existirem), embute em base64 e gera um
 unico arquivo HTML autossuficiente (catalogo.html), pronto p/ WhatsApp/celular.
 Rode:  python gerar_catalogo_paula.py
 """
-import os, io, base64, html, datetime
+import os, io, base64, html, datetime, json, unicodedata
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 IMG_DIR = os.path.join(BASE, "img")
@@ -272,11 +272,102 @@ def wa_link(prod):
 def esc(s): return html.escape(str(s))
 
 # ----------------------------------------------------------------------------
+# FICHAS DOS PERFUMES  (detalhes exibidos no lightbox pelo botao "Detalhes")
+#   genero      : "Masculino" | "Feminino" | "Unissex"
+#   fragancia   : 1-3 de  Doce, Frutado, Floral, Cítrico, Fresco, Especiado,
+#                         Amadeirado, Oriental/Âmbar, Aromático, Almiscarado
+#   intensidade : "Leve" | "Médio" | "Marcante"
+#   ideal       : 1-3 de  Dia a dia, Trabalho, Noite, Datas especiais
+#   publico     : 1-2 de  Jovens, Adultos, Maduros, Versátil
+# Contratipos/arabes "inspirados" herdam a ficha do original pelo eq= (ver FICHAS_REF).
+# ----------------------------------------------------------------------------
+def ficha(genero, fragancia, intensidade, ideal, publico):
+    return dict(genero=genero, fragancia=fragancia, intensidade=intensidade,
+                ideal=ideal, publico=publico)
+
+# categorias que exibem ficha (so perfumes; cosmeticos ficam sem)
+PERF_CATS = {"perf_import", "perf_arabe", "perf_tester", "arabic_insp", "contratipo", "promo"}
+
+# fichas nomeadas (reaproveitadas por codigo direto E como referencia p/ clones)
+_f_coco   = ficha("Feminino",  ["Floral","Cítrico","Amadeirado"], "Marcante", ["Dia a dia","Trabalho","Datas especiais"], ["Jovens","Adultos"])
+_f_lvb    = ficha("Feminino",  ["Doce","Floral","Frutado"],       "Marcante", ["Dia a dia","Datas especiais"],            ["Jovens","Adultos"])
+_f_lady   = ficha("Feminino",  ["Doce","Floral","Frutado"],       "Marcante", ["Noite","Datas especiais"],                ["Jovens","Adultos"])
+_f_scandal= ficha("Feminino",  ["Doce","Floral"],                 "Marcante", ["Noite","Datas especiais"],                ["Jovens","Adultos"])
+_f_vph    = ficha("Masculino", ["Cítrico","Aromático","Amadeirado"], "Médio", ["Dia a dia","Trabalho"],                   ["Versátil"])
+_f_delina = ficha("Feminino",  ["Floral","Frutado","Almiscarado"],"Médio",    ["Dia a dia","Datas especiais"],            ["Jovens","Adultos"])
+_f_bleu   = ficha("Masculino", ["Amadeirado","Aromático","Cítrico"],"Médio",  ["Dia a dia","Trabalho","Noite"],           ["Adultos","Maduros"])
+
+# fichas por CODIGO (perfumes reais do catalogo)
+FICHAS = {
+    "38":   _f_coco,
+    "32":   ficha("Masculino", ["Cítrico","Amadeirado","Aromático"], "Médio",   ["Dia a dia","Trabalho"],          ["Jovens","Adultos"]),
+    "44":   ficha("Feminino",  ["Floral","Frutado"],                 "Médio",   ["Dia a dia","Trabalho","Datas especiais"], ["Adultos","Maduros"]),
+    "132":  _f_lvb,
+    "80":   ficha("Masculino", ["Fresco","Cítrico","Amadeirado"],    "Médio",   ["Dia a dia","Trabalho"],          ["Jovens"]),
+    "78":   _f_lady,
+    "527":  _f_scandal,
+    "811":  _f_vph,
+    "1756": ficha("Masculino", ["Especiado","Doce","Amadeirado"],    "Marcante",["Noite","Datas especiais"],       ["Jovens","Adultos"]),
+    "1586": _f_delina,
+    "1149": ficha("Masculino", ["Frutado","Amadeirado","Cítrico"],   "Marcante",["Dia a dia","Noite"],             ["Jovens","Adultos"]),
+    "2006": _f_bleu,
+}
+
+# fichas por REFERENCIA/INSPIRACAO (clones herdam via eq="insp. <ref>")
+FICHAS_REF = {
+    "coco mademoiselle":  _f_coco,
+    "la vie est belle":   _f_lvb,
+    "lady million":       _f_lady,
+    "scandal":            _f_scandal,
+    "versace pour homme": _f_vph,
+    "delina":             _f_delina,
+    "bleu de chanel":     _f_bleu,
+    "one million":  ficha("Masculino", ["Especiado","Doce","Amadeirado"], "Marcante", ["Noite","Datas especiais"], ["Jovens","Adultos"]),
+    "olympea":      ficha("Feminino",  ["Doce","Floral","Oriental/Âmbar"], "Marcante", ["Noite","Datas especiais"], ["Jovens","Adultos"]),
+    "good girl":    ficha("Feminino",  ["Doce","Floral","Amadeirado"],     "Marcante", ["Noite","Datas especiais"], ["Jovens","Adultos"]),
+    "sauvage":      ficha("Masculino", ["Fresco","Especiado","Amadeirado"],"Marcante", ["Dia a dia","Noite"],       ["Jovens","Adultos"]),
+    "212 vip men":  ficha("Masculino", ["Especiado","Amadeirado"],         "Médio",    ["Noite","Datas especiais"], ["Jovens"]),
+    "bad boy":      ficha("Masculino", ["Especiado","Amadeirado","Doce"],  "Médio",    ["Dia a dia","Noite"],       ["Jovens"]),
+    "prada paradoxe": ficha("Feminino",["Floral","Oriental/Âmbar"],        "Médio",    ["Dia a dia","Noite"],       ["Jovens","Adultos"]),
+}
+
+def _norm(s):
+    s = (s or "").lower().replace("insp.", " ").replace("mesmo cheiro do tradicional", " ")
+    s = "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
+    s = "".join(ch if (ch.isalnum() or ch == " ") else " " for ch in s)
+    return " ".join(s.split())
+
+def detalhe(p):
+    """Retorna a ficha do produto (direta por codigo ou herdada por inspiracao), ou None."""
+    if p["cat"] not in PERF_CATS:
+        return None
+    if p["cod"] in FICHAS:
+        return FICHAS[p["cod"]]
+    if p["eq"]:
+        ref = _norm(p["eq"])
+        if ref in FICHAS_REF:
+            return FICHAS_REF[ref]
+        for k, v in FICHAS_REF.items():   # match parcial (eq pode ter texto extra)
+            if k in ref:
+                return v
+    return None
+
+# ----------------------------------------------------------------------------
 # RENDER
 # ----------------------------------------------------------------------------
 total = len(P)
 com_foto = sum(1 for p in P if img_data(p["cod"], p["cat"]))
 menor = min(p["preco"] for p in P)
+
+# mapa codigo -> ficha (so quem tem), enviado ao JS p/ montar o cartao "Detalhes"
+det_map = {}
+for p in P:
+    d = detalhe(p)
+    if d:
+        det_map[p["cod"]] = {"g": d["genero"], "fr": d["fragancia"],
+                             "in": d["intensidade"], "id": d["ideal"], "pu": d["publico"]}
+det_json = json.dumps(det_map, ensure_ascii=False)
+com_ficha = len(det_map)
 
 def data_attrs(p):
     return (f'data-cod="{esc(p["cod"])}" data-nome="{esc(p["nome"])}" data-preco="{p["preco"]:.2f}" '
@@ -556,6 +647,29 @@ body.has-cart .top{{bottom:80px}}
 .lb-x{{position:absolute;top:14px;right:16px;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}}
 .lb-hint{{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:rgba(255,255,255,.65);font-size:12px;pointer-events:none;transition:opacity .4s}}
 .lb.zoomed .lb-hint{{opacity:0}}
+/* cartao de detalhes do perfume */
+.lb-det{{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:4;border:1px solid var(--gold);border-radius:999px;background:rgba(0,0,0,.4);color:#fff;font-size:14px;padding:9px 18px;display:none;align-items:center;gap:7px;cursor:pointer;white-space:nowrap}}
+.lb.has-ficha .lb-det{{display:flex}}
+.lb.zoomed .lb-det{{opacity:0;pointer-events:none}}
+.lb-dots{{position:absolute;bottom:60px;left:0;right:0;display:none;justify-content:center;gap:7px;z-index:4}}
+.lb.has-ficha:not(.zoomed) .lb-dots{{display:flex}}
+.lb-dots span{{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35)}}
+.lb-dots span.on{{background:#fff}}
+.lb-card{{position:absolute;inset:0;padding:64px 16px 88px;display:none;overflow:auto;z-index:3}}
+.lb.showcard .lb-card{{display:block}}
+.lb.showcard img{{visibility:hidden}}
+.lb.showcard .lb-hint{{opacity:0}}
+.fcard{{background:#fff;border-radius:14px;padding:18px 16px;max-width:360px;margin:0 auto}}
+.fcard h3{{font-family:Georgia,serif;font-size:19px;color:var(--ink);margin:0 0 2px;font-weight:600;line-height:1.25}}
+.fcard .fsub{{font-size:12px;color:var(--mut);margin:0 0 14px}}
+.ffld{{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}}
+.ffld:last-child{{margin-bottom:0}}
+.flbl{{font-size:12px;color:#a06a2a;font-weight:600;display:flex;align-items:center;gap:6px}}
+.flbl i{{font-size:15px}}
+.fchips{{display:flex;flex-wrap:wrap;gap:6px}}
+.fchips span{{font-size:13px;background:var(--rose-l);color:var(--wine);padding:4px 11px;border-radius:999px}}
+.fchips span.cg{{background:var(--wine);color:#fff}}
+.fchips span.ci{{background:#f3e3bf;color:#8a5a00}}
 </style>
 </head>
 <body>
@@ -619,11 +733,15 @@ body.has-cart .top{{bottom:80px}}
 <div class="lb" id="lb">
   <button class="lb-x" id="lbX" type="button" aria-label="Fechar">&times;</button>
   <img id="lbImg" src="" alt="" draggable="false">
+  <div class="lb-card" id="lbCard"></div>
   <div class="lb-hint">Pinça ou toque duplo para dar zoom</div>
+  <div class="lb-dots"><span id="lbDot0" class="on"></span><span id="lbDot1"></span></div>
+  <button class="lb-det" id="lbDet" type="button"><i class="ti ti-info-circle"></i> Detalhes</button>
 </div>
 
 <script>
 const WA="{WHATSAPP}", MARCA_PED="{MARCA}";
+const DET={det_json};
 const BRL=new Intl.NumberFormat('pt-BR',{{style:'currency',currency:'BRL'}});
 const fmt=v=>BRL.format(v);
 const wrap=document.querySelector('.wrap');
@@ -719,8 +837,32 @@ document.getElementById('cpGo').onclick=fechar;
 /* LIGHTBOX estilo galeria: toque na foto abre; pinca/toque-duplo da zoom (centrado),
    arrasta com limites; fecha SO no X. */
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbX=document.getElementById('lbX');
+const lbCard=document.getElementById('lbCard'),lbDet=document.getElementById('lbDet');
+const lbDot0=document.getElementById('lbDot0'),lbDot1=document.getElementById('lbDot1');
 const MINS=1,MAXS=4,DTS=2.6;
-let s=1,tx=0,ty=0,base=null;
+let s=1,tx=0,ty=0,base=null,curCod=null;
+const FLAB={{g:'Gênero',fr:'Fragância',in:'Intensidade',id:'Ideal para',pu:'Público'}};
+const FICO={{g:'ti-venus',fr:'ti-flask',in:'ti-flame',id:'ti-clock-hour-3',pu:'ti-users'}};
+function esc2(t){{return String(t).replace(/[&<>"]/g,c=>({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]));}}
+function chips(arr,cls){{return arr.map(v=>'<span'+(cls?' class="'+cls+'"':'')+'>'+esc2(v)+'</span>').join('');}}
+function buildCard(cod,nome){{
+  const d=DET[cod]; if(!d)return false;
+  const gico=d.g==='Feminino'?'ti-venus':d.g==='Masculino'?'ti-mars':'ti-gender-bigender';
+  let h='<div class="fcard"><h3>'+esc2(nome||'')+'</h3><p class="fsub">#'+esc2(cod)+'</p>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti '+gico+'"></i> Gênero</span><div class="fchips">'+chips([d.g],'cg')+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-flask"></i> Fragância</span><div class="fchips">'+chips(d.fr)+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-flame"></i> Intensidade</span><div class="fchips">'+chips([d.in],'ci')+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-clock-hour-3"></i> Ideal para</span><div class="fchips">'+chips(d.id)+'</div></div>';
+  h+='<div class="ffld"><span class="flbl"><i class="ti ti-users"></i> Público</span><div class="fchips">'+chips(d.pu)+'</div></div>';
+  h+='</div>';
+  lbCard.innerHTML=h; return true;
+}}
+function showCard(on){{
+  lb.classList.toggle('showcard',on);
+  lbDot0.classList.toggle('on',!on);lbDot1.classList.toggle('on',on);
+  lbDet.innerHTML=on?'<i class="ti ti-photo"></i> Foto':'<i class="ti ti-info-circle"></i> Detalhes';
+  if(on){{s=1;tx=0;ty=0;applyT(false);}}
+}}
 function applyT(anim){{lbImg.style.transition=anim?'transform .26s cubic-bezier(.22,.61,.36,1)':'none';lbImg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';lb.classList.toggle('zoomed',s>1.01);}}
 function ensureBase(){{const r=lbImg.getBoundingClientRect();base={{l:r.left-tx,t:r.top-ty,w:r.width/s,h:r.height/s}};}}
 function clampT(){{
@@ -733,27 +875,33 @@ function zoomAt(px,py,ns){{
   const cx=(px-base.l-tx)/s,cy=(py-base.t-ty)/s;
   s=ns;tx=px-base.l-cx*s;ty=py-base.t-cy*s;
 }}
-function openLB(src,alt){{
-  s=1;tx=0;ty=0;base=null;lbImg.alt=alt||'';
+function openLB(src,alt,cod){{
+  s=1;tx=0;ty=0;base=null;lbImg.alt=alt||'';curCod=cod||null;
   lbImg.style.transition='none';lbImg.style.transform='';
   lbImg.src=src;
-  lb.classList.add('open');lb.classList.remove('zoomed');document.body.style.overflow='hidden';
+  const temFicha=cod&&buildCard(cod,alt);
+  lb.classList.remove('zoomed','showcard');
+  lb.classList.toggle('has-ficha',!!temFicha);
+  showCard(false);
+  lb.classList.add('open');document.body.style.overflow='hidden';
   const init=()=>{{ensureBase();applyT(false);}};
   if(lbImg.complete&&lbImg.naturalWidth)requestAnimationFrame(init);else lbImg.onload=()=>requestAnimationFrame(init);
 }}
-function closeLB(){{lb.classList.remove('open','zoomed');document.body.style.overflow='';s=1;tx=0;ty=0;base=null;}}
+function closeLB(){{lb.classList.remove('open','zoomed','showcard','has-ficha');document.body.style.overflow='';s=1;tx=0;ty=0;base=null;curCod=null;}}
 function dist(t){{return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);}}
 function mid(t){{return{{x:(t[0].clientX+t[1].clientX)/2,y:(t[0].clientY+t[1].clientY)/2}};}}
 
 document.addEventListener('click',e=>{{
   const im=e.target.closest('.media img,.lthumb img');
-  if(im){{e.preventDefault();openLB(im.currentSrc||im.src,im.alt);}}
+  if(im){{e.preventDefault();const c=im.closest('[data-cod]');openLB(im.currentSrc||im.src,im.alt,c&&c.dataset.cod);}}
 }});
 lbX.onclick=e=>{{e.stopPropagation();closeLB();}};
+lbDet.onclick=e=>{{e.stopPropagation();showCard(!lb.classList.contains('showcard'));}};
 
 /* --- toque --- */
 let pinch=false,panT=false,sStart=1,dStart=0,plx=0,ply=0,lastTap=0;
 lb.addEventListener('touchstart',e=>{{
+  if(lb.classList.contains('showcard'))return;
   if(!base)ensureBase();
   if(e.touches.length===2){{pinch=true;panT=false;sStart=s;dStart=dist(e.touches);applyT(false);}}
   else if(e.touches.length===1){{
@@ -766,6 +914,7 @@ lb.addEventListener('touchstart',e=>{{
   }}
 }},{{passive:false}});
 lb.addEventListener('touchmove',e=>{{
+  if(lb.classList.contains('showcard'))return;
   if(pinch&&e.touches.length===2){{
     e.preventDefault();const m=mid(e.touches);
     zoomAt(m.x,m.y,sStart*dist(e.touches)/dStart);applyT(false);
@@ -780,10 +929,10 @@ lb.addEventListener('touchend',e=>{{
 }});
 
 /* --- desktop --- */
-lb.addEventListener('dblclick',e=>{{if(!base)ensureBase();if(s>1.01){{s=1;}}else zoomAt(e.clientX,e.clientY,DTS);clampT();applyT(true);}});
-lb.addEventListener('wheel',e=>{{e.preventDefault();if(!base)ensureBase();zoomAt(e.clientX,e.clientY,s*(e.deltaY<0?1.18:.85));clampT();applyT(false);}},{{passive:false}});
+lb.addEventListener('dblclick',e=>{{if(lb.classList.contains('showcard'))return;if(!base)ensureBase();if(s>1.01){{s=1;}}else zoomAt(e.clientX,e.clientY,DTS);clampT();applyT(true);}});
+lb.addEventListener('wheel',e=>{{if(lb.classList.contains('showcard'))return;e.preventDefault();if(!base)ensureBase();zoomAt(e.clientX,e.clientY,s*(e.deltaY<0?1.18:.85));clampT();applyT(false);}},{{passive:false}});
 let md=false,mlx=0,mly=0;
-lb.addEventListener('mousedown',e=>{{if(s>1){{md=true;mlx=e.clientX;mly=e.clientY;applyT(false);e.preventDefault();}}}});
+lb.addEventListener('mousedown',e=>{{if(lb.classList.contains('showcard'))return;if(s>1){{md=true;mlx=e.clientX;mly=e.clientY;applyT(false);e.preventDefault();}}}});
 addEventListener('mousemove',e=>{{if(md){{tx+=e.clientX-mlx;ty+=e.clientY-mly;mlx=e.clientX;mly=e.clientY;applyT(false);}}}});
 addEventListener('mouseup',()=>{{if(md){{md=false;clampT();applyT(true);}}}});
 addEventListener('resize',()=>{{if(lb.classList.contains('open')){{base=null;s=1;tx=0;ty=0;requestAnimationFrame(()=>{{ensureBase();applyT(false);}});}}}});
