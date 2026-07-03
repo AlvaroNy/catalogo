@@ -756,7 +756,7 @@ body.has-cart .top{{bottom:80px}}
 .lb.open{{display:flex}}
 .lb img{{max-width:100vw;max-height:100vh;width:auto;height:auto;object-fit:contain;transform-origin:0 0;-webkit-user-drag:none}}
 .lb.zoomed img{{cursor:grab}}
-.lb-x{{position:absolute;top:14px;right:16px;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}}
+.lb-x{{position:absolute;top:14px;right:16px;z-index:6;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}}
 .lb-hint{{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:rgba(255,255,255,.65);font-size:12px;pointer-events:none;transition:opacity .4s}}
 .lb.zoomed .lb-hint{{opacity:0}}
 /* cartao de detalhes do perfume */
