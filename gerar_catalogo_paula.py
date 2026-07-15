@@ -250,6 +250,9 @@ def brl(v):
 # categorias que compartilham a mesma foto de frasco (contratipos 25ml)
 CAT_FALLBACK = {"contratipo": "DB", "arabic_insp": "DB"}
 
+# produtos cuja foto e de outra versao/linha -> marca "Foto ilustrativa" no card
+FOTO_ILUSTRATIVA = {"1903", "2146"}
+
 # False = imagens WebP externas (site leve, lazy-load) | True = base64 embutido (HTML unico)
 EMBED_IMAGES = False
 IMG_EXTS = ("webp", "jpg", "jpeg", "png")
@@ -550,10 +553,11 @@ def card_html(p):
         badge = f'<span class="badge">{esc(p["badge"])}</span>'
     else:
         badge = ""
+    ilustr = '<span class="ilustr"><i class="ti ti-photo"></i> Ilustrativa</span>' if p["cod"] in FOTO_ILUSTRATIVA else ""
     cls = "card promo" if is_promo(p) else "card"
     eq = f'<p class="eq">{esc(p["eq"])}</p>' if p["eq"] else ""
     return f'''<article class="{cls}" {data_attrs(p)}>
-      <div class="media">{media}{badge}</div>
+      <div class="media">{media}{badge}{ilustr}</div>
       <div class="info">
         <p class="nome">{esc(p['nome'])}</p>{eq}
         <div class="row"><span class="cod">#{esc(p['cod'])}</span>{price_html(p)}</div>
@@ -641,6 +645,8 @@ h2 .qt{{margin-left:auto;font-family:'Segoe UI',sans-serif;font-size:12px;font-w
 .card{{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.15s;box-shadow:0 2px 8px rgba(92,26,50,.05)}}
 .card:hover{{transform:translateY(-3px);box-shadow:0 8px 20px rgba(92,26,50,.13)}}
 .media{{position:relative;height:150px;background:#fff;padding:12px;border-bottom:1px solid var(--line)}}
+.ilustr{{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;padding:2px 6px;border-radius:6px;display:inline-flex;align-items:center;gap:3px;line-height:1.3;letter-spacing:.2px}}
+.ilustr i{{font-size:10px}}
 .ph{{display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,#f7e9ee,#fbf3f6);border-radius:10px}}
 .ph span{{font-family:Georgia,serif;font-size:40px;color:var(--rose);opacity:.55}}
 .badge{{position:absolute;top:8px;left:8px;background:var(--gold);color:#3a2a05;font-size:10px;font-weight:700;letter-spacing:.4px;padding:3px 9px;border-radius:20px;text-transform:uppercase}}
