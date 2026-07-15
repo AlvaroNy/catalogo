@@ -253,6 +253,57 @@ CAT_FALLBACK = {"contratipo": "DB", "arabic_insp": "DB"}
 # produtos cuja foto e de outra versao/linha -> marca "Foto ilustrativa" no card
 FOTO_ILUSTRATIVA = {"1903", "2146"}
 
+# ----------------------------------------------------------------------------
+# EM FALTA — arquivo historico: produtos que JA tivemos no catalogo, com o
+# ULTIMO preco de referencia. PADRAO: ao desabilitar um produto, mova-o pra ca
+# com o ultimo valor. (codigo, nome, ultimo_preco, categoria_original_p/_foto)
+# Itens que voltarem a ficar ativos sao ignorados automaticamente (ver P_FALTA).
+# ----------------------------------------------------------------------------
+EM_FALTA = [
+    ("1733","Al Wataniah Ameerati Fem EDP 100ml",125.10,"perf_arabe"),
+    ("2107","Al Wataniah Sabah Sugar EDP 100ml",130.50,"perf_arabe"),
+    ("905","Antonio Banderas The Secret Golden Men 200ml EDT",170.10,"perf_import"),
+    ("1149","Armaf Club de Nuit Intense Men EDT 105ml",230.40,"perf_arabe"),
+    ("1988","Armaf Club de Nuit Woman 100ml",220.50,"perf_arabe"),
+    ("509","Base Milani Nº 03",79.20,"cosm_base"),
+    ("1015","Body Lotion VS Bare Vanilla",110.70,"cosm_vs_lot"),
+    ("99","Body Lotion VS Coconut Passion",105.30,"cosm_vs_lot"),
+    ("96","Body Lotion VS Pure Seduction",105.30,"cosm_vs_lot"),
+    ("250","Body Splash VS Amber Romance",105.30,"cosm_vs_spl"),
+    ("786","Body Splash VS Aqua Kiss",105.30,"cosm_vs_spl"),
+    ("380","Body Splash VS Coconut Passion",105.30,"cosm_vs_spl"),
+    ("1016","Body Splash VS Romantic",105.30,"cosm_vs_spl"),
+    ("1054","Body Splash VS Temptation",105.30,"cosm_vs_spl"),
+    ("27","CH 212 VIP Rose 80ml EDP",470.70,"perf_import"),
+    ("32","Chanel Allure Homme Sport 100ml EDT",740.70,"perf_import"),
+    ("255","Chloé by Chloé 100ml EDP",540.90,"perf_import"),
+    ("1266","Dream Brand 060 — Narciso For Her",45.00,"contratipo"),
+    ("1107","Dream Brand 069 — La Nuit Trésor",45.00,"contratipo"),
+    ("1228","Dream Brand 070 — Bleu de Chanel",40.50,"contratipo"),
+    ("1112","Dream Brand 126 — Good Girl",58.50,"contratipo"),
+    ("1270","Dream Brand 168 — Angel EDP",45.00,"contratipo"),
+    ("2126","Dream Brand 303 — Devotion D&G",45.00,"contratipo"),
+    ("1604","Dream Brand 340 — 212 Heroes Fem",45.90,"contratipo"),
+    ("2159","Dream Brand 356 — J'adore L'Or",45.00,"contratipo"),
+    ("1639","Dream Brand 361 — Libre Intense",45.00,"contratipo"),
+    ("2127","Dream Brand 445 — Prada Paradoxe",45.00,"contratipo"),
+    ("2037","Hawas Black EDP 100ml (Rasasi)",205.20,"perf_arabe"),
+    ("527","Jean Paul Gaultier Scandal Fem 80ml EDP",495.90,"perf_import"),
+    ("1019","Joico Color Therapy Máscara 500g",240.30,"cosm_cabelo"),
+    ("851","Joico Moisture Recovery Combo Shampoo + Cond. 1L",266.40,"cosm_cabelo"),
+    ("196","Joico Moisture Recovery Máscara 500ml",144.00,"cosm_cabelo"),
+    ("2197","Lattafa Queen of Arabia EDP 100ml",330.30,"perf_arabe"),
+    ("1991","Maison Alhambra Delilah Blanc EDP 100ml",190.80,"perf_arabe"),
+    ("1892","Maison Alhambra Leonie Fem EDP 100ml",155.70,"perf_arabe"),
+    ("2235","Maison Alhambra Papillon D'Or EDP 100ml",255.60,"perf_arabe"),
+    ("2114","Maison Alhambra Perseus Exclusif EDP 100ml",130.50,"perf_arabe"),
+    ("1890","Maison Alhambra Salvo Men EDP 100ml",135.00,"perf_arabe"),
+    ("1635","Paco Rabanne Invictus Victory Elixir Parfum Intense 100ml",490.50,"perf_import"),
+    ("112","Revlon Uniq One Leave-in (vermelho) trad.",69.30,"cosm_cabelo"),
+    ("133","Thierry Mugler Angel Body Lotion 200ml",370.80,"cosm_corpo"),
+    ("177","UDV For Men Black 100ml EDT",85.50,"perf_import"),
+]
+
 # False = imagens WebP externas (site leve, lazy-load) | True = base64 embutido (HTML unico)
 EMBED_IMAGES = False
 IMG_EXTS = ("webp", "jpg", "jpeg", "png")
@@ -576,6 +627,20 @@ def lista_html(p):
       {add_ctrl(True)}
     </div>'''
 
+def emfalta_html(p):
+    if p["src"]:
+        media = f'<img loading="lazy" decoding="async" src="{p["src"]}" alt="{esc(p["nome"])}">'
+    else:
+        media = f'<div class="ph"><span>{esc(p["nome"][:1].upper())}</span></div>'
+    dn = esc(p["nome"].lower()) + " " + esc(p["cod"])
+    return f'''<article class="card offcard" data-n="{dn}">
+      <div class="offmedia">{media}<span class="offtag"><i class="ti ti-ban"></i> Em falta</span></div>
+      <div class="info">
+        <p class="nome">{esc(p["nome"])}</p>
+        <div class="row"><span class="cod">#{esc(p["cod"])}</span><span class="preco-old">últ. {brl(p["preco"])}</span></div>
+      </div>
+    </article>'''
+
 secoes = []
 nav = []
 for key, titulo, icon, modo in CATEGORIAS:
@@ -592,6 +657,19 @@ for key, titulo, icon, modo in CATEGORIAS:
       <h2 class="sec-h"><i class="ti {icon}"></i>{esc(titulo)}<span class="qt">{len(itens)} itens</span><i class="ti ti-chevron-down chev"></i></h2>
       {nota}
       <div class="sec-body">{corpo}</div>
+    </section>''')
+
+# --- Em Falta (arquivo historico: ultimo preco de referencia) ---
+_ativos = {p["cod"] for p in P}
+P_FALTA = [dict(cod=c, nome=n, preco=pr, src=img_data(c, cat0))
+           for (c, n, pr, cat0) in EM_FALTA if c not in _ativos]
+if P_FALTA:
+    corpo_f = '<div class="grid">' + "".join(emfalta_html(p) for p in P_FALTA) + '</div>'
+    nav.append(f'<a href="#emfalta"><i class="ti ti-ban"></i>Em Falta <b>{len(P_FALTA)}</b></a>')
+    secoes.append(f'''<section id="emfalta" class="sec-falta collapsed">
+      <h2 class="sec-h"><i class="ti ti-ban"></i>Em Falta<span class="qt">{len(P_FALTA)} itens</span><i class="ti ti-chevron-down chev"></i></h2>
+      <p class="sec-note"><i class="ti ti-info-circle"></i>Produtos que já tivemos — referência de último preço. Indisponíveis no momento.</p>
+      <div class="sec-body">{corpo_f}</div>
     </section>''')
 
 HTML = f'''<!DOCTYPE html>
@@ -647,6 +725,15 @@ h2 .qt{{margin-left:auto;font-family:'Segoe UI',sans-serif;font-size:12px;font-w
 .media{{position:relative;height:150px;background:#fff;padding:12px;border-bottom:1px solid var(--line)}}
 .ilustr{{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;padding:2px 6px;border-radius:6px;display:inline-flex;align-items:center;gap:3px;line-height:1.3;letter-spacing:.2px}}
 .ilustr i{{font-size:10px}}
+/* categoria Em Falta (arquivo historico, foto p&b) */
+.offcard{{opacity:.94}}
+.offmedia{{position:relative;height:150px;background:#fff;padding:12px;border-bottom:1px solid var(--line)}}
+.offmedia img{{filter:grayscale(1);opacity:.68}}
+.offtag{{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.62);color:#fff;font-size:10px;padding:2px 8px;border-radius:6px;display:inline-flex;align-items:center;gap:4px;letter-spacing:.3px}}
+.offtag i{{font-size:11px}}
+.preco-old{{color:var(--mut);font-size:13px;font-weight:600}}
+.sec-falta .sec-h,.sec-falta .sec-h i,.sec-falta .sec-note,.sec-falta .sec-note i{{color:var(--mut)}}
+.nav a[href="#emfalta"]{{color:var(--mut)}}
 .ph{{display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg,#f7e9ee,#fbf3f6);border-radius:10px}}
 .ph span{{font-family:Georgia,serif;font-size:40px;color:var(--rose);opacity:.55}}
 .badge{{position:absolute;top:8px;left:8px;background:var(--gold);color:#3a2a05;font-size:10px;font-weight:700;letter-spacing:.4px;padding:3px 9px;border-radius:20px;text-transform:uppercase}}
