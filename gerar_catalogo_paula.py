@@ -20,10 +20,10 @@ WHATSAPP   = "5537991716781"          # so numeros, com 55 + DDD. ex: 5511999998
 WHATSAPP_F = "(37) 99171-6781"        # como aparece escrito
 INSTAGRAM  = "seu_instagram"          # sem @  -> TROCAR pelo @ real
 ENDERECO   = "Rua Tupis, 174 - Moema"
-REFERENCIA = "Tabela de Atacado · 07/09/2026"
+REFERENCIA = "Tabela de Atacado · 08/09/2026"
 # Data da ultima atualizacao de PRODUTOS/PRECOS (formato DD/MM/AAAA).
 # >>> SO TROQUE quando mudar produto ou preco. Melhorias no site NAO contam. <<<
-ATUALIZADO = "07/09/2026"
+ATUALIZADO = "08/09/2026"
 
 # ----------------------------------------------------------------------------
 # CATEGORIAS (ordem de exibicao)
@@ -122,7 +122,6 @@ add("1586","Maison Alhambra Delilah EDP 100ml",      180.00, "perf_arabe", "Mais
 add("1892","Maison Alhambra Leonie Fem EDP 100ml",   189.90, "perf_arabe", "Maison Alhambra Leonie 100ml eau de parfum", eq="insp. Libre", badge="Novo")
 add("2006","Maison Maître de Blue EDP 100ml",        140.40, "perf_arabe", "Maison Alhambra Maitre de Blue 100ml", eq="insp. Bleu de Chanel", badge="Novo")
 add("2258","Maison N.02 Men EDP 100ml",              140.40, "perf_arabe", "Maison Alhambra No 2 men eau de parfum 100ml", eq="insp. 212 NYC Men", badge="Novo")
-add("2114","Maison Alhambra Perseus Exclusif EDP 100ml",130.50, "perf_arabe", "Maison Alhambra Perseus Exclusif 100ml", badge="Novo")
 add("1964","Maison Alhambra Philos Pura EDP 100ml",  140.40, "perf_arabe", "Maison Alhambra Philos Pura 100ml eau de parfum", badge="Novo")
 add("1890","Maison Alhambra Salvo Men EDP 100ml",    139.50, "perf_arabe", "Maison Alhambra Salvo 100ml", eq="insp. Sauvage")
 add("1651","Maison Alhambra So Candid Pour Homme 100ml",195.30, "perf_arabe", "Maison Alhambra So Candid pour homme 100ml", badge="Novo")
@@ -138,11 +137,11 @@ db("1255","001","Allure Homme Sport",45.00); db("1109","005","One Million",40.50
 db("1111","008","212 VIP Men",40.50); db("1265","009","212 VIP Fem",45.00); db("1114","012","La Vie Est Belle",40.50)
 db("1219","015","Miss Dior",45.00); db("1110","021","Coco Mademoiselle",40.50); db("1846","026","Very Irresistible",45.00)
 db("1363","027","Hypnotic Poison",43.20); db("1290","034","VIP Rose",40.50); db("1220","039","Chanel Chance",45.00)
-db("1291","043","Alien",40.50); db("1322","055","Black Opium",45.90); db("1266","060","Narciso For Her",45.00,"Novo")
+db("1322","055","Black Opium",45.90); db("1266","060","Narciso For Her",45.00,"Novo")
 db("1267","063","Armani Si",45.00); db("1107","069","La Nuit Trésor",45.00); db("1228","070","Bleu de Chanel",40.50)
 db("1108","087","Olympéa",45.00); db("1268","093","Light Blue Fem",45.00); db("1229","097","Euphoria Fem",45.00)
 db("1256","100","Sauvage",40.50,"Novo"); db("1293","105","Lady Million",40.50); db("1532","106","Versace Pour Homme",45.00)
-db("1116","116","Invictus",45.00); db("1112","126","Good Girl",58.50,"Novo"); db("1328","136","Scandal",40.50)
+db("1116","116","Invictus",45.00); db("1328","136","Scandal",40.50)
 db("1547","151","Delina",45.00); db("1307","153","Jean Paul Le Male",45.00); db("1329","154","212 VIP Black",45.00)
 db("1417","159","Libre",40.50); db("1269","164","Armani Code Men",45.00); db("1270","168","Angel EDP",45.00)
 db("1380","171","Jean Paul Classique Fem",45.00); db("1568","173","Good Girl Legère",58.50,"Novo")
@@ -151,7 +150,7 @@ db("1414","181","Bad Boy",58.50,"Novo"); db("1594","188","My Way",45.00); db("12
 db("1923","205","Jean Paul Divine",45.00,"Novo"); db("1446","214","Invictus Black",45.00,"Novo"); db("2097","225","Victoria Bombshell",45.00)
 db("1875","234","Petit et Mamans (infantil)",45.00); db("1419","238","Idôle",45.00); db("1451","265","Versace Dylan Fem",49.50)
 db("1523","285","Joop!",45.00); db("2018","295","Ariana Grande Cloud",45.00); db("1503","296","Phantom",45.00)
-db("1591","297","Good Girl Very",52.20,"Novo"); db("2126","303","Devotion D&G",45.00); db("2265","309","Nishane Hundred Silent Ways",45.00,"Novo")
+db("2126","303","Devotion D&G",45.00); db("2265","309","Nishane Hundred Silent Ways",45.00,"Novo")
 db("1971","321","Scandal Men",45.00,"Novo"); db("1718","324","Jean Paul La Belle",40.50,"Novo"); db("2135","325","Le Male Le Parfum",45.00)
 db("2143","329","Fame Couture",45.00,"Novo"); db("1592","351","Dylan Turquoise",45.00); db("1639","361","Libre Intense",45.00,"Novo")
 db("1624","365","Fame",45.00); db("1973","367","Valaya",45.00,"Novo"); db("1906","382","L'Interdit",45.00)
@@ -182,7 +181,6 @@ add("1593","Body Lotion VS Velvet Petals 236ml",           105.30, "cosm_vs_lot"
 
 # --- Body Splash Victoria's Secret ---
 add("786", "Body Splash VS Aqua Kiss",                     105.30, "cosm_vs_spl", "Victoria's Secret Aqua Kiss fragrance mist")
-add("977", "Body Splash VS Bare Vanilla",                  105.30, "cosm_vs_spl", "Victoria's Secret Bare Vanilla fragrance mist", badge="Novo")
 add("380", "Body Splash VS Coconut Passion",               105.30, "cosm_vs_spl", "Victoria's Secret Coconut Passion fragrance mist", badge="Novo")
 add("234", "Body Splash VS Love Spell",                    105.30, "cosm_vs_spl", "Victoria's Secret Love Spell fragrance mist", badge="Novo")
 add("1622","Body Splash VS Midnight Bloom",                105.30, "cosm_vs_spl", "Victoria's Secret Midnight Bloom fragrance mist")
@@ -404,6 +402,9 @@ EM_FALTA = [
     ("1802","Body Lotion VS Velvet Petals Shimmer 236ml",107.00,"cosm_vs_lot"),
     ("251","Body Splash VS Bare Vanilla Shimmer",110.70,"cosm_vs_spl"),
     ("1103","St. Ives Creme Corporal Colágeno & Elastina 532ml",45.00,"cosm_corpo"),
+    # --- desabilitados na tabela 08-09 ---
+    ("1291","Dream Brand 043 — Alien",40.50,"contratipo"),
+    ("1591","Dream Brand 297 — Good Girl Very",52.20,"contratipo"),
 ]
 
 # False = imagens WebP externas (site leve, lazy-load) | True = base64 embutido (HTML unico)
