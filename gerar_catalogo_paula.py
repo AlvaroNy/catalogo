@@ -20,10 +20,10 @@ WHATSAPP   = "5537991716781"          # so numeros, com 55 + DDD. ex: 5511999998
 WHATSAPP_F = "(37) 99171-6781"        # como aparece escrito
 INSTAGRAM  = "seu_instagram"          # sem @  -> TROCAR pelo @ real
 ENDERECO   = "Rua Tupis, 174 - Moema"
-REFERENCIA = "Tabela de Atacado · 30/09/2026"
+REFERENCIA = "Tabela de Atacado · 09/11/2026"
 # Data da ultima atualizacao de PRODUTOS/PRECOS (formato DD/MM/AAAA).
 # >>> SO TROQUE quando mudar produto ou preco. Melhorias no site NAO contam. <<<
-ATUALIZADO = "30/09/2026"
+ATUALIZADO = "09/11/2026"
 
 # ----------------------------------------------------------------------------
 # CATEGORIAS (ordem de exibicao)
@@ -56,154 +56,128 @@ def add(cod, nome, preco, cat, q="", eq="", badge="", de=0):
     P.append(dict(cod=cod, nome=nome, preco=preco, cat=cat, q=q or nome, eq=eq, badge=badge, de=de))
 
 # --- Perfumes importados ---
-add("142", "Animale For Men 100ml EDT",              175.50, "perf_import", "Animale for men eau de toilette 100ml")
 add("180", "Antonio Banderas The Secret Gold Men 100ml EDT", 159.30, "perf_import", "Antonio Banderas The Secret Golden Secret men 100ml eau de toilette")
-add("2",   "Azzaro Pour Homme 100ml EDT",            230.40, "perf_import", "Azzaro Pour Homme 100ml eau de toilette")
-add("410", "CH 212 NYC Fem 100ml EDT",               470.70, "perf_import", "Carolina Herrera 212 NYC women eau de toilette 100ml", badge="Novo")
-add("22",  "CH 212 NYC Men 100ml EDT",               395.10, "perf_import", "Carolina Herrera 212 NYC Men 100ml eau de toilette")
-add("25",  "CH 212 Sexy Fem 100ml EDP",              480.60, "perf_import", "Carolina Herrera 212 Sexy women eau de parfum 100ml", badge="Novo")
+add("410", "CH 212 NYC Fem 100ml EDT",               450.90, "perf_import", "Carolina Herrera 212 NYC women eau de toilette 100ml")
 add("23",  "CH 212 Sexy Men 100ml EDT",              400.50, "perf_import", "Carolina Herrera 212 Sexy Men 100ml")
 add("26",  "CH 212 VIP Femme 80ml EDP",              480.60, "perf_import", "Carolina Herrera 212 VIP women eau de parfum 80ml")
-add("1037","CH 212 VIP Black Men - Kit 100ml",       430.20, "perf_import", "Carolina Herrera 212 VIP Black Men gift set", badge="Kit")
-add("24",  "CH 212 VIP Men 100ml EDT",               395.10, "perf_import", "Carolina Herrera 212 VIP Men 100ml")
-add("1147","CH 212 VIP Rose 125ml EDP",              510.30, "perf_import", "Carolina Herrera 212 VIP Rose 125ml eau de parfum", badge="Novo")
-add("32",  "Chanel Allure Homme Sport 100ml EDT",    740.70, "perf_import", "Chanel Allure Homme Sport 100ml eau de toilette")
-add("255", "Chloé by Chloé 100ml EDP",               560.70, "perf_import", "Chloe by Chloe 100ml eau de parfum", badge="Novo")
-add("20",  "CK Euphoria Fem 100ml EDP",              330.30, "perf_import", "Calvin Klein Euphoria 100ml eau de parfum", badge="Novo")
+add("38",  "Chanel Coco Mademoiselle 100ml EDP",     950.40, "perf_import", "Chanel Coco Mademoiselle 100ml eau de parfum", badge="Novo")
 add("21",  "CK Euphoria Men 100ml EDT",              240.30, "perf_import", "Calvin Klein Euphoria Men 100ml eau de toilette")
 add("44",  "Dior J'adore 100ml EDP",                 650.70, "perf_import", "Dior J'adore eau de parfum 100ml")
-add("1074","Dior Sauvage 100ml EDP",                 690.30, "perf_import", "Dior Sauvage eau de parfum 100ml")
-add("1989","Dolce & Gabbana K Men - Kit 100ml + gel + pós barba", 460.80, "perf_import", "Dolce Gabbana K King men eau de parfum 100ml", badge="Kit")
-add("48",  "Dolce & Gabbana Light Blue Fem 100ml EDT",399.60, "perf_import", "Dolce Gabbana Light Blue pour femme 100ml eau de toilette")
 add("52",  "Ferrari Black 125ml EDT",                165.60, "perf_import", "Ferrari Black 125ml eau de toilette")
-add("248", "Gabriela Sabatini Fem 60ml EDT",          99.00, "perf_import", "Gabriela Sabatini eau de toilette 60ml")
-add("1172","Jean Paul Gaultier Le Male Le Parfum Intense 125ml", 480.60, "perf_import", "Jean Paul Gaultier Le Male Le Parfum eau de parfum intense 125ml")
+add("55",  "Giorgio Armani Acqua di Gio 100ml EDT",  390.60, "perf_import", "Giorgio Armani Acqua di Gio pour homme 100ml eau de toilette", badge="Novo")
 add("68",  "Joop! Homme 125ml EDT",                  165.60, "perf_import", "Joop Homme 125ml eau de toilette")
 add("132", "Lancôme La Vie Est Belle 100ml EDP",     535.50, "perf_import", "Lancome La Vie Est Belle 100ml eau de parfum")
-add("70",  "Marina de Bourbon Rouge Royal 100ml EDP",209.70, "perf_import", "Marina de Bourbon Rouge Royal 100ml")
 add("567", "Marina de Bourbon Royal Diamond 100ml EDP",210.60, "perf_import", "Princesse Marina de Bourbon Royal Diamond 100ml")
 add("80",  "Paco Rabanne Invictus 100ml EDT",        380.70, "perf_import", "Paco Rabanne Invictus 100ml eau de toilette")
-add("452", "Paco Rabanne Invictus - Kit lata 100ml + gel de banho", 430.20, "perf_import", "Paco Rabanne Invictus gift set eau de toilette shower gel", badge="Kit")
 add("78",  "Paco Rabanne Lady Million 80ml EDP",     450.90, "perf_import", "Paco Rabanne Lady Million 80ml eau de parfum")
 add("113", "Paco Rabanne Olympéa 80ml EDP",          460.80, "perf_import", "Paco Rabanne Olympea 80ml eau de parfum")
 add("74",  "Paco Rabanne One Million 100ml EDT",     380.70, "perf_import", "Paco Rabanne One Million 100ml eau de toilette")
+add("233", "Silver Scent Intense Masculino 100ml EDT",165.60, "perf_import", "Jacques Bogart Silver Scent Intense 100ml eau de toilette", badge="Novo")
+add("2033","Sospiro Vibrato EDP 100ml",             1290.60, "perf_import", "Sospiro Perfumes Vibrato eau de parfum 100ml", badge="Novo")
 add("674", "UDV For Men Cinza 100ml EDT",             74.70, "perf_import", "Ulric de Varens UDV pour homme grey 100ml")
-add("1482","Versace Dylan Turquoise Fem 100ml",      460.80, "perf_import", "Versace Dylan Turquoise pour femme eau de parfum 100ml")
-add("811", "Versace Pour Homme 100ml EDT",           390.60, "perf_import", "Versace Pour Homme 100ml eau de toilette")
 add("1086","Yves Saint Laurent Libre 90ml EDP",      630.90, "perf_import", "Yves Saint Laurent Libre eau de parfum 90ml")
 
+# --- Testers ---
+add("2078","Tester Gucci Guilty Elixir de Parfum Fem 60ml", 520.20, "perf_tester", "Gucci Guilty Elixir de Parfum pour femme 60ml", badge="Tester")
+
 # --- Perfumes arabes ---
-add("1821","Al Haramain Amber Oud Gold EDP 120ml",   320.40, "perf_arabe", "Al Haramain Amber Oud Gold Edition eau de parfum 120ml")
-add("1150","Al Haramain L'Aventure Men EDP 100ml",   240.30, "perf_arabe", "Al Haramain L'Aventure men eau de parfum 100ml")
-add("1733","Al Wataniah Ameerati Fem EDP 100ml",     119.70, "perf_arabe", "Al Wataniah Ameerati 100ml", badge="Novo")
-add("1734","Al Wataniah Durrat Al Aroos EDP 85ml",   125.10, "perf_arabe", "Al Wataniah Durrat Al Aroos 85ml")
-add("1676","Al Wataniah Sabah Al Ward EDP Fem 100ml",125.10, "perf_arabe", "Al Wataniah Sabah Al Ward eau de parfum 100ml", badge="Novo")
+add("1733","Al Wataniah Ameerati Fem EDP 100ml",     119.70, "perf_arabe", "Al Wataniah Ameerati 100ml")
+add("2032","Al Wataniah Attar Al Wesal EDP 100ml",   129.60, "perf_arabe", "Al Wataniah Attar Al Wesal 100ml", eq="insp. JPG Ultra Male", badge="Novo")
+add("1734","Al Wataniah Durrat Al Aroos EDP 85ml",   120.60, "perf_arabe", "Al Wataniah Durrat Al Aroos 85ml")
 add("2107","Al Wataniah Sabah Sugar EDP 100ml",      130.50, "perf_arabe", "Al Wataniah Sabah Sugar eau de parfum 100ml")
 add("1855","Al Wataniah Shagaf Al Ward EDP Fem 100ml",139.50, "perf_arabe", "Al Wataniah Shagaf Al Ward 100ml")
+add("2283","Armaf Club de Nuit Elite EDP 105ml",     370.80, "perf_arabe", "Armaf Club de Nuit Elite eau de parfum 105ml", badge="Novo")
+add("1149","Armaf Club de Nuit Intense Men EDT 105ml",220.50, "perf_arabe", "Armaf Club de Nuit Intense Man 105ml eau de toilette", badge="Novo")
 add("2219","Asdaaf Ameerat Al Arab Vermelho EDP 100ml",125.10, "perf_arabe", "Asdaaf Ameerat Al Arab red eau de parfum 100ml")
 add("2077","French Avenue Liquid Brun EDP 100ml",    270.90, "perf_arabe", "French Avenue Liquid Brun eau de parfum 100ml")
-add("2179","French Avenue Vulcan Feu EDP 100ml",     285.30, "perf_arabe", "French Avenue Vulcan Feu eau de parfum 100ml")
-add("2193","Lattafa Afeef EDP 100ml",                395.10, "perf_arabe", "Lattafa Afeef eau de parfum 100ml")
-add("1937","Lattafa Asad Bourbon EDP 100ml",         190.80, "perf_arabe", "Lattafa Asad Bourbon 100ml eau de parfum", badge="Novo")
-add("2246","Lattafa Asad - Kit 4 x 25ml",            260.10, "perf_arabe", "Lattafa Asad discovery set 4 x 25ml", badge="Kit")
+add("1937","Lattafa Asad Bourbon EDP 100ml",         230.40, "perf_arabe", "Lattafa Asad Bourbon 100ml eau de parfum")
 add("1756","Lattafa Asad Men EDP 100ml",             170.10, "perf_arabe", "Lattafa Asad 100ml eau de parfum")
-add("1837","Lattafa Fakhar Black EDP 100ml",         165.60, "perf_arabe", "Lattafa Fakhar Black 100ml")
-add("1891","Lattafa Fakhar Fem EDP 100ml (rosa)",    189.90, "perf_arabe", "Lattafa Fakhar Lattafa for women 100ml rose")
-add("1870","Lattafa Fakhar Gold EDP 100ml",          160.20, "perf_arabe", "Lattafa Fakhar Gold men 100ml eau de parfum")
-add("1852","Lattafa Haya Fem EDP 100ml",             195.30, "perf_arabe", "Lattafa Haya 100ml eau de parfum", eq="insp. Prada Paradoxe")
-add("1929","Lattafa Musamman White EDP 100ml",       265.50, "perf_arabe", "Lattafa Musamman White eau de parfum 100ml")
-add("2197","Lattafa Queen of Arabia EDP 100ml",      420.30, "perf_arabe", "Lattafa Queen of Arabia eau de parfum 100ml", badge="Novo")
-add("1707","Lattafa Tharwah Gold EDP 100ml",         340.20, "perf_arabe", "Lattafa Tharwah Gold 100ml", badge="Novo")
-add("1812","Lattafa Yara EDP 100ml (rosa)",          175.50, "perf_arabe", "Lattafa Yara 100ml eau de parfum pink", badge="Novo")
-add("1962","Lattafa Yara - Kit 4 x 25ml",            215.10, "perf_arabe", "Lattafa Yara discovery set 4 x 25ml", badge="Kit")
-add("2005","Maison Alhambra Alpine Homme Sport EDP 100ml", 160.20, "perf_arabe", "Maison Alhambra Alpine Homme Sport 100ml", eq="insp. Allure Sport")
+add("1891","Lattafa Fakhar Fem EDP 100ml (rosa)",    175.50, "perf_arabe", "Lattafa Fakhar Lattafa for women 100ml rose")
+add("2321","Lattafa Queen of Arabia - Kit 3 peças",  495.90, "perf_arabe", "Lattafa Queen of Arabia gift set 3 pieces", badge="Kit")
+add("1707","Lattafa Tharwah Gold EDP 100ml",         330.30, "perf_arabe", "Lattafa Tharwah Gold 100ml")
+add("1812","Lattafa Yara EDP 100ml (rosa)",          175.50, "perf_arabe", "Lattafa Yara 100ml eau de parfum pink")
 add("1991","Maison Alhambra Delilah Blanc EDP 100ml",175.50, "perf_arabe", "Maison Alhambra Delilah Blanc eau de parfum 100ml")
-add("1586","Maison Alhambra Delilah EDP 100ml",      180.00, "perf_arabe", "Maison Alhambra Delilah pour femme eau de parfum 100ml", eq="insp. Delina")
+add("2010","Maison Intrude EDP 100ml",               125.10, "perf_arabe", "Maison Alhambra Intrude eau de parfum 100ml", eq="insp. L'Interdit", badge="Novo")
 add("2006","Maison Maître de Blue EDP 100ml",        140.40, "perf_arabe", "Maison Alhambra Maitre de Blue 100ml", eq="insp. Bleu de Chanel")
-add("2258","Maison N.02 Men EDP 100ml",              140.40, "perf_arabe", "Maison Alhambra No 2 men eau de parfum 100ml", eq="insp. 212 NYC Men")
+add("2317","Maison Mindset EDP 100ml",               198.90, "perf_arabe", "Maison Alhambra Mindset eau de parfum 100ml", eq="insp. YSL MYSLF", badge="Novo")
 add("1964","Maison Alhambra Philos Pura EDP 100ml",  140.40, "perf_arabe", "Maison Alhambra Philos Pura 100ml eau de parfum")
+add("2031","Maison Pink Eclipse EDP 100ml",          210.60, "perf_arabe", "Maison Alhambra Pink Eclipse eau de parfum 100ml", eq="insp. Prada Paradoxe", badge="Novo")
 add("1890","Maison Alhambra Salvo Men EDP 100ml",    155.70, "perf_arabe", "Maison Alhambra Salvo 100ml", eq="insp. Sauvage")
 add("1651","Maison Alhambra So Candid Pour Homme 100ml",195.30, "perf_arabe", "Maison Alhambra So Candid pour homme 100ml")
 add("2250","Maison Victorioso EDP 100ml",            125.10, "perf_arabe", "Maison Alhambra Victorioso eau de parfum 100ml", eq="insp. Invictus")
 add("2271","Maison Victorioso Neroli EDP 100ml",     129.60, "perf_arabe", "Maison Alhambra Victorioso Neroli eau de parfum 100ml", eq="insp. Invictus")
+add("2322","Maison Yeah Man EDP 100ml",              150.30, "perf_arabe", "Maison Alhambra Yeah Man eau de parfum 100ml", eq="insp. YSL Y", badge="Novo")
 add("1650","Orientica Royal Amber EDP 80ml",         370.80, "perf_arabe", "Orientica Royal Amber eau de parfum 80ml")
 
 # --- Contratipos Dream Brand 25ml ---
 def db(cod, num, ref, preco, badge=""):
     add(cod, f"Dream Brand {num} — {ref}", preco, "contratipo", "Dream Brand perfume 25ml", eq=f"insp. {ref}", badge=badge)
-db("1255","001","Allure Homme Sport",45.00); db("1109","005","One Million",40.50); db("1111","008","212 VIP Men",40.50)
-db("1265","009","212 VIP Fem",45.00); db("1114","012","La Vie Est Belle",40.50); db("1219","015","Miss Dior",45.00)
-db("1110","021","Coco Mademoiselle",40.50); db("1363","027","Hypnotic Poison",43.20); db("1290","034","VIP Rose",40.50)
-db("1220","039","Chanel Chance",45.00); db("1291","043","Alien",40.50,"Novo"); db("1322","055","Black Opium",45.90)
-db("1266","060","Narciso For Her",45.00); db("1267","063","Armani Si",45.00); db("1107","069","La Nuit Trésor",45.00)
-db("1268","093","Light Blue Fem",45.00); db("1229","097","Euphoria Fem",45.00); db("1256","100","Sauvage",40.50)
-db("1293","105","Lady Million",40.50); db("1328","136","Scandal",40.50); db("1547","151","Delina",45.00)
-db("1307","153","Jean Paul Le Male",45.00); db("1329","154","212 VIP Black",45.00); db("1417","159","Libre",40.50)
-db("1269","164","Armani Code Men",45.00); db("1380","171","Jean Paul Classique Fem",45.00); db("1568","173","Good Girl Legère",58.50)
-db("1325","174","Polo Blue",45.00,"Novo"); db("1308","175","Azzaro Pour Homme",45.00); db("1943","176","Issey Miyake Fem",45.00)
-db("1271","177","Chloé",45.00); db("1414","181","Bad Boy",58.50); db("1282","194","212 Sexy",45.00)
-db("1923","205","Jean Paul Divine",45.00); db("1446","214","Invictus Black",45.00); db("2097","225","Victoria Bombshell",45.00)
-db("1875","234","Petit et Mamans (infantil)",45.00); db("1876","246","Burberry Her",45.00,"Novo"); db("1451","265","Versace Dylan Fem",49.50)
+db("1255","001","Allure Homme Sport",45.00); db("1264","003","CH Fem",45.00,"Novo"); db("1109","005","One Million",40.50)
+db("1115","007","J'adore",45.00,"Novo"); db("1111","008","212 VIP Men",40.50); db("1265","009","212 VIP Fem",45.00)
+db("1114","012","La Vie Est Belle",40.50); db("1219","015","Miss Dior",45.00); db("1110","021","Coco Mademoiselle",40.50)
+db("1846","026","Very Irresistible",45.00,"Novo"); db("1363","027","Hypnotic Poison",43.20); db("1290","034","VIP Rose",40.50)
+db("1220","039","Chanel Chance",45.00); db("1291","043","Alien",40.50); db("1228","070","Bleu de Chanel",40.50,"Novo")
+db("1108","087","Olympéa",45.00,"Novo"); db("1229","097","Euphoria Fem",45.00); db("1256","100","Sauvage",40.50)
+db("1293","105","Lady Million",40.50); db("1116","116","Invictus",45.00,"Novo"); db("1328","136","Scandal",40.50)
+db("1547","151","Delina",45.00); db("1307","153","Jean Paul Le Male",45.00); db("1329","154","212 VIP Black",45.00)
+db("1417","159","Libre",40.50); db("1269","164","Armani Code Men",45.00); db("1380","171","Jean Paul Classique Fem",45.00)
+db("1308","175","Azzaro Pour Homme",45.00); db("1943","176","Issey Miyake Fem",45.00); db("1271","177","Chloé",45.00)
+db("1414","181","Bad Boy",58.50); db("1923","205","Jean Paul Divine",45.00); db("1446","214","Invictus Black",45.00)
+db("1875","234","Petit et Mamans (infantil)",45.00); db("1419","238","Idôle",45.00,"Novo"); db("1876","246","Burberry Her",45.00)
 db("1523","285","Joop!",45.00); db("2018","295","Ariana Grande Cloud",45.00); db("1503","296","Phantom",45.00)
-db("1591","297","Good Girl Very",52.20,"Novo"); db("2126","303","Devotion D&G",45.00); db("2265","309","Nishane Hundred Silent Ways",45.00)
-db("1971","321","Scandal Men",45.00); db("1718","324","Jean Paul La Belle",40.50); db("2135","325","Le Male Le Parfum",45.00)
-db("2143","329","Fame Couture",45.00); db("1674","336","My Way Intense",45.00,"Novo"); db("1606","349","Olympéa Solar",45.00,"Novo")
-db("1624","365","Fame",45.00); db("1744","380","Baccarat Rouge 540",45.00,"Novo"); db("1906","382","L'Interdit",45.00)
-db("2269","383","La Nuit Fleur",45.00,"Novo"); db("1879","402","Erba Pura",45.00); db("1819","415","Fame Parfum (preto)",47.70)
-db("2261","428","Fame Intense",45.00); db("1907","433","YSL MYSLF",45.00); db("2063","435","Burberry Goddess",45.00)
-db("2276","440","Phantom Elixir",45.00,"Novo"); db("2127","445","Prada Paradoxe",45.00); db("2262","461","Chloé Nuit Égypte",45.00)
-db("2268","478","Libre L'Eau Nue",45.00); db("2282","479","Si Passione Red Musk",45.00,"Novo"); db("2266","483","Chance Splendide",45.00)
+db("1592","351","Dylan Turquoise",45.00,"Novo"); db("1973","367","Valaya",45.00,"Novo"); db("1744","380","Baccarat Rouge 540",45.00)
+db("1906","382","L'Interdit",45.00); db("2269","383","La Nuit Fleur",45.00); db("1879","402","Erba Pura",45.00)
+db("1819","415","Fame Parfum (preto)",47.70); db("2261","428","Fame Intense",45.00); db("2063","435","Burberry Goddess",45.00)
+db("2287","446","Scandal Intense (roxo)",45.00,"Novo"); db("2262","461","Chloé Nuit Égypte",45.00); db("2292","468","Delina Limited Edition",45.00,"Novo")
+db("2268","478","Libre L'Eau Nue",45.00); db("2266","483","Chance Splendide",45.00)
+
+# --- Inspiracoes Arabic 25ml ---
+add("2093","Arabic 25ml — inspiração Sabah",   48.60, "arabic_insp", "Arabic perfume 25ml", eq="insp. Sabah Al Ward", badge="Novo")
+add("1985","Arabic 25ml — Royal Amber",        50.40, "arabic_insp", "Arabic perfume 25ml", eq="insp. Royal Amber", badge="Novo")
+add("2039","Arabic 25ml — Tharwad Gold",       48.60, "arabic_insp", "Arabic perfume 25ml", eq="insp. Tharwah Gold", badge="Novo")
 
 # --- La Rive (contratipos full-size) ---
-add("2252","La Rive Prestige The Man Black 90ml", 68.40, "la_rive", "La Rive Prestige The Man Black 90ml eau de toilette", eq="insp. 212 VIP Black")
+add("1488","La Rive L'Excellente 100ml",          64.80, "la_rive", "La Rive L'Excellente 100ml eau de parfum", eq="insp. CK Euphoria", badge="Novo")
 add("1452","La Rive Eternal Kiss 90ml",           68.40, "la_rive", "La Rive Eternal Kiss 90ml eau de parfum", eq="insp. Scandal")
-add("1185","La Rive In Woman 90ml",               68.40, "la_rive", "La Rive In Woman 90ml eau de parfum", eq="insp. Armani Si")
-add("1166","La Rive Madame Isabelle 100ml",       68.40, "la_rive", "La Rive Madame Isabelle 100ml eau de parfum", eq="insp. Coco Mademoiselle")
+add("1162","La Rive Miss Dream 100ml",            64.80, "la_rive", "La Rive Miss Dream 100ml eau de parfum", eq="insp. Good Girl", badge="Novo")
+add("2252","La Rive Prestige The Man Black 90ml", 68.40, "la_rive", "La Rive Prestige The Man Black 90ml eau de toilette", eq="insp. 212 VIP Black")
 
 # --- Bases ---
 
 # --- Hidratantes Victoria's Secret ---
 add("898", "Body Lotion VS Aqua Kiss (emb. nova)",         105.30, "cosm_vs_lot", "Victoria's Secret Aqua Kiss body lotion", badge="Emb. nova")
-add("1903","Body Lotion VS Bare Vanilla Shimmer 236ml",    110.70, "cosm_vs_lot", "Victoria's Secret Bare Vanilla Shimmer body lotion")
 add("99",  "Body Lotion VS Coconut Passion",               105.30, "cosm_vs_lot", "Victoria's Secret Coconut Passion body lotion")
-add("95",  "Body Lotion VS Love Spell 236ml",              105.30, "cosm_vs_lot", "Victoria's Secret Love Spell body lotion 236ml", badge="Novo")
 add("1621","Body Lotion VS Midnight Bloom",                105.30, "cosm_vs_lot", "Victoria's Secret Midnight Bloom body lotion")
-add("96",  "Body Lotion VS Pure Seduction",                105.30, "cosm_vs_lot", "Victoria's Secret Pure Seduction body lotion")
-add("1559","Body Lotion VS Pure Seduction Shimmer 236ml",  107.00, "cosm_vs_lot", "Victoria's Secret Pure Seduction Shimmer body lotion")
+add("1593","Body Lotion VS Velvet Petals 236ml",           105.30, "cosm_vs_lot", "Victoria's Secret Velvet Petals body lotion", badge="Novo")
+add("2316","Body Lotion VS Velvet Petals Intense 250ml",   105.30, "cosm_vs_lot", "Victoria's Secret Velvet Petals Intense body lotion 250ml", badge="Novo")
 
 # --- Body Splash Victoria's Secret ---
 add("786", "Body Splash VS Aqua Kiss",                     105.30, "cosm_vs_spl", "Victoria's Secret Aqua Kiss fragrance mist")
-add("977", "Body Splash VS Bare Vanilla",                  105.30, "cosm_vs_spl", "Victoria's Secret Bare Vanilla fragrance mist", badge="Novo")
+add("977", "Body Splash VS Bare Vanilla",                  105.30, "cosm_vs_spl", "Victoria's Secret Bare Vanilla fragrance mist")
 add("380", "Body Splash VS Coconut Passion",               105.30, "cosm_vs_spl", "Victoria's Secret Coconut Passion fragrance mist")
-add("234", "Body Splash VS Love Spell",                    105.30, "cosm_vs_spl", "Victoria's Secret Love Spell fragrance mist")
-add("1622","Body Splash VS Midnight Bloom",                105.30, "cosm_vs_spl", "Victoria's Secret Midnight Bloom fragrance mist")
 add("252", "Body Splash VS Pure Seduction",                105.30, "cosm_vs_spl", "Victoria's Secret Pure Seduction fragrance mist")
 add("859", "Body Splash VS Pure Seduction Shimmer",        105.30, "cosm_vs_spl", "Victoria's Secret Pure Seduction Shimmer fragrance mist")
-add("488", "Body Splash VS Rush",                          105.30, "cosm_vs_spl", "Victoria's Secret Rush fragrance mist")
 add("1518","Body Splash VS Velvet Petals",                 105.30, "cosm_vs_spl", "Victoria's Secret Velvet Petals fragrance mist")
-add("1803","Body Splash VS Velvet Petals Shimmer",         110.70, "cosm_vs_spl", "Victoria's Secret Velvet Petals Shimmer fragrance mist")
+add("2315","Body Splash VS Velvet Petals Intense 250ml",   105.30, "cosm_vs_spl", "Victoria's Secret Velvet Petals Intense fragrance mist 250ml", badge="Novo")
 
 # --- Cremes & Splash nacionais ---
 add("1986","Body Splash Bath & Body Works",                89.10, "cosm_nac", "Bath and Body Works fine fragrance mist")
-add("2198","Ciclo Creme Velvety",                          28.80, "cosm_nac", "Ciclo Velvety creme hidratante corporal")
 add("2199","Ciclo Splash Velvety",                         32.40, "cosm_nac", "Ciclo Velvety body splash colonia")
-add("1872","Creme Dream Brand 001 Allure Sport 200ml",     39.60, "cosm_nac", "creme hidratante corporal", eq="insp. Allure Homme Sport", badge="Novo")
-add("1272","Creme Dream Brand 012 La Vie 200ml",           39.60, "cosm_nac", "creme hidratante corporal", eq="insp. La Vie Est Belle", badge="Novo")
-add("1273","Creme Dream Brand 034 212 VIP Rose 200ml",     39.60, "cosm_nac", "creme hidratante corporal", eq="insp. 212 VIP Rose", badge="Novo")
-add("2055","Isabelle Creme La Vie 200ml",                  59.40, "cosm_nac", "creme hidratante corporal", eq="insp. La Vie Est Belle")
+add("1956","Creme Dream Brand 100 Sauvage 200ml",          38.70, "cosm_nac", "creme hidratante corporal", eq="insp. Sauvage", badge="Novo")
 
 # --- Body Mist Maison ---
 add("2204","Maison Alhambra Body Mist Delilah 250ml",      65.70, "cosm_mist", "Maison Alhambra Delilah body mist", eq="insp. Delina")
 add("2215","Maison Alhambra Body Mist Pink Eclipse 250ml", 65.70, "cosm_mist", "Maison Alhambra Pink Eclipse body mist", eq="insp. Paradoxe")
 
 # --- Cabelo & Tratamento ---
-add("2279","Máscara Fino Premium Touch 230g",            105.30, "cosm_cabelo", "Fino Premium Touch mascara capilar 230g", badge="Novo")
+add("112", "Revlon Uniq One Leave-in (vermelho) trad.",   74.70, "cosm_cabelo", "Revlon Uniq One all in one hair treatment", badge="Novo")
 add("110", "Silicon Mix Máscara Bambu 450g",              49.50, "cosm_cabelo", "Silicon Mix Bambu hair treatment mask 450g")
 add("111", "Silicon Mix Máscara Avanti Tradicional 450g", 49.50, "cosm_cabelo", "Silicon Mix Avanti hair treatment mask 450g")
 
 # --- Corpo & Skincare ---
+add("1791","Lilyeve Skincare",                             155.70, "cosm_corpo", "Lilyeve skincare", badge="Novo")
+add("2318","Medicube Vitamina C Capsule Cream",            150.30, "cosm_corpo", "Medicube vitamin C capsule cream", badge="Novo")
 add("133", "Thierry Mugler Angel Body Lotion 200ml",       370.80, "cosm_corpo", "Thierry Mugler Angel perfuming body lotion 200ml")
-add("2278","Tester Thierry Mugler Angel Body Creme 200ml", 330.30, "cosm_corpo", "Thierry Mugler Angel perfuming body lotion 200ml", badge="Tester")
 
 # ============================================================================
 # ACESSORIOS & BRINDES DE MARCA (fotos proprias em img/B##)
@@ -248,13 +222,16 @@ def brl(v):
 CAT_FALLBACK = {"contratipo": "DB", "arabic_insp": "DB"}
 
 # produtos cuja foto e de outra versao/linha -> marca "Foto ilustrativa" no card
-FOTO_ILUSTRATIVA = {"1903", "1559", "2198",
-                    # kits que usam a foto do frasco avulso
-                    "1037",
-                    # linha compartilhada / sabor nao especificado na tabela
-                    "1872", "1272", "1273", "1986",
-                    # tabela diz "Neroli"; foto disponivel e do Victorioso Nero
-                    "2271"}
+FOTO_ILUSTRATIVA = {
+    # linha compartilhada / fragrancia nao especificada na tabela
+    "1956", "1986",
+    # versao "Intense" 250ml: foto e do Velvet Petals tradicional
+    "2316", "2315",
+    # tabela diz "Neroli"; foto disponivel e do Victorioso Nero
+    "2271",
+    # tabela diz so "Lilyeve Skincare"; foto e do ampoule da marca
+    "1791",
+}
 
 # ----------------------------------------------------------------------------
 # EM FALTA — arquivo historico: produtos que JA tivemos no catalogo, com o
@@ -279,7 +256,7 @@ EM_FALTA = [
     ("1054","Body Splash VS Temptation",105.30,"cosm_vs_spl"),
     ("27","CH 212 VIP Rose 80ml EDP",460.80,"perf_import"),
     ("32","Chanel Allure Homme Sport 100ml EDT",740.70,"perf_import"),
-    ("255","Chloé by Chloé 100ml EDP",540.90,"perf_import"),
+    ("255","Chloé by Chloé 100ml EDP",560.70,"perf_import"),
     ("1266","Dream Brand 060 — Narciso For Her",45.00,"contratipo"),
     ("1107","Dream Brand 069 — La Nuit Trésor",45.00,"contratipo"),
     ("1228","Dream Brand 070 — Bleu de Chanel",40.50,"contratipo"),
@@ -295,7 +272,7 @@ EM_FALTA = [
     ("1019","Joico Color Therapy Máscara 500g",240.30,"cosm_cabelo"),
     ("851","Joico Moisture Recovery Combo Shampoo + Cond. 1L",266.40,"cosm_cabelo"),
     ("196","Joico Moisture Recovery Máscara 500ml",144.00,"cosm_cabelo"),
-    ("2197","Lattafa Queen of Arabia EDP 100ml",330.30,"perf_arabe"),
+    ("2197","Lattafa Queen of Arabia EDP 100ml",420.30,"perf_arabe"),
     ("1991","Maison Alhambra Delilah Blanc EDP 100ml",190.80,"perf_arabe"),
     ("1892","Maison Alhambra Leonie Fem EDP 100ml",189.90,"perf_arabe"),
     ("2235","Maison Alhambra Papillon D'Or EDP 100ml",255.60,"perf_arabe"),
@@ -308,7 +285,7 @@ EM_FALTA = [
     # --- desabilitados na tabela 24-07 ---
     ("2","Azzaro Pour Homme 100ml EDT",230.40,"perf_import"),
     ("1855","Al Wataniah Shagaf Al Ward EDP Fem 100ml",135.00,"perf_arabe"),
-    ("1676","Al Wataniah Sabah Al Ward EDP Fem 100ml",115.20,"perf_arabe"),
+    ("1676","Al Wataniah Sabah Al Ward EDP Fem 100ml",125.10,"perf_arabe"),
     ("1150","Al Haramain L'Aventure Men EDP 100ml",240.30,"perf_arabe"),
     ("2219","Asdaaf Ameerat Al Arab Vermelho EDP 100ml",129.60,"perf_arabe"),
     ("1756","Lattafa Asad Men EDP 100ml",170.10,"perf_arabe"),
@@ -332,22 +309,22 @@ EM_FALTA = [
     # --- desabilitados na tabela 12-08 ---
     ("48","Dolce & Gabbana Light Blue Fem 100ml EDT",399.60,"perf_import"),
     ("52","Ferrari Black 125ml EDT",150.30,"perf_import"),
-    ("248","Gabriela Sabatini Fem 60ml EDT",90.00,"perf_import"),
+    ("248","Gabriela Sabatini Fem 60ml EDT",99.00,"perf_import"),
     ("674","UDV For Men Cinza 100ml EDT",74.70,"perf_import"),
     ("23","CH 212 Sexy Men 100ml EDT",400.50,"perf_import"),
     ("26","CH 212 VIP Femme 80ml EDP",470.70,"perf_import"),
-    ("20","CK Euphoria Fem 100ml EDP",320.40,"perf_import"),
+    ("20","CK Euphoria Fem 100ml EDP",330.30,"perf_import"),
     ("233","Silver Scent Intense Masculino 100ml EDT",165.60,"perf_import"),
     ("136","Thierry Mugler Angel Feminino 100ml EDP",550.80,"perf_import"),
-    ("1821","Al Haramain Amber Oud Gold EDP 120ml",330.30,"perf_arabe"),
-    ("2193","Lattafa Afeef EDP 100ml",390.60,"perf_arabe"),
+    ("1821","Al Haramain Amber Oud Gold EDP 120ml",320.40,"perf_arabe"),
+    ("2193","Lattafa Afeef EDP 100ml",395.10,"perf_arabe"),
     ("1812","Lattafa Yara EDP 100ml (rosa)",145.80,"perf_arabe"),
     ("2077","French Avenue Liquid Brun EDP 100ml",260.10,"perf_arabe"),
     ("1794","Lattafa Asad Elixir Men EDP 100ml",220.50,"perf_arabe"),
     ("2070","Lattafa Atheeri EDP 100ml",350.10,"perf_arabe"),
-    ("1837","Lattafa Fakhar Black EDP 100ml",170.10,"perf_arabe"),
+    ("1837","Lattafa Fakhar Black EDP 100ml",165.60,"perf_arabe"),
     ("1891","Lattafa Fakhar Fem EDP 100ml (rosa)",210.60,"perf_arabe"),
-    ("1852","Lattafa Haya Fem EDP 100ml",185.40,"perf_arabe"),
+    ("1852","Lattafa Haya Fem EDP 100ml",195.30,"perf_arabe"),
     ("1929","Lattafa Musamman White EDP 100ml",265.50,"perf_arabe"),
     ("1707","Lattafa Tharwah Gold EDP 100ml",290.70,"perf_arabe"),
     ("1964","Maison Alhambra Philos Pura EDP 100ml",140.40,"perf_arabe"),
@@ -359,7 +336,7 @@ EM_FALTA = [
     ("1318","Dream Brand 102 — 212 NYC Men",45.00,"contratipo"),
     ("1294","Dream Brand 156 — 212 Sexy Men",45.00,"contratipo"),
     ("1554","Dream Brand 294 — L'Interdit Rouge",45.00,"contratipo"),
-    ("1718","Dream Brand 324 — La Belle",40.50,"contratipo"),
+    ("1718","Dream Brand 324 — Jean Paul La Belle",40.50,"contratipo"),
     ("95","Body Lotion VS Love Spell 236ml",105.30,"cosm_vs_lot"),
     ("139","Body Lotion VS Romantic 236ml",105.30,"cosm_vs_lot"),
     ("977","Body Splash VS Bare Vanilla",105.30,"cosm_vs_spl"),
@@ -422,6 +399,56 @@ EM_FALTA = [
     ("875","Versace Pour Homme - Kit 100ml + 10ml + shampoo 150ml",430.20,"perf_import"),
     ("458","Tester Chanel Bleu de Chanel 100ml EDP",820.80,"perf_tester"),
     ("1118","Tester Dolce & Gabbana Light Blue Fem 100ml",315.00,"perf_tester"),
+    # --- desabilitados na tabela 09-11 ---
+    ("1322","Dream Brand 055 — Black Opium",45.90,"contratipo"),
+    ("1267","Dream Brand 063 — Armani Si",45.00,"contratipo"),
+    ("1268","Dream Brand 093 — Light Blue Fem",45.00,"contratipo"),
+    ("1568","Dream Brand 173 — Good Girl Legère",58.50,"contratipo"),
+    ("1325","Dream Brand 174 — Polo Blue",45.00,"contratipo"),
+    ("1282","Dream Brand 194 — 212 Sexy",45.00,"contratipo"),
+    ("2097","Dream Brand 225 — Victoria Bombshell",45.00,"contratipo"),
+    ("1451","Dream Brand 265 — Versace Dylan Fem",49.50,"contratipo"),
+    ("2265","Dream Brand 309 — Nishane Hundred Silent Ways",45.00,"contratipo"),
+    ("1971","Dream Brand 321 — Scandal Men",45.00,"contratipo"),
+    ("2135","Dream Brand 325 — Le Male Le Parfum",45.00,"contratipo"),
+    ("2143","Dream Brand 329 — Fame Couture",45.00,"contratipo"),
+    ("1606","Dream Brand 349 — Olympéa Solar",45.00,"contratipo"),
+    ("1624","Dream Brand 365 — Fame",45.00,"contratipo"),
+    ("1907","Dream Brand 433 — YSL MYSLF",45.00,"contratipo"),
+    ("2276","Dream Brand 440 — Phantom Elixir",45.00,"contratipo"),
+    ("2282","Dream Brand 479 — Si Passione Red Musk",45.00,"contratipo"),
+    ("2279","Máscara Fino Premium Touch 230g",105.30,"cosm_cabelo"),
+    ("2278","Tester Thierry Mugler Angel Body Creme 200ml",330.30,"cosm_corpo"),
+    ("2198","Ciclo Creme Velvety",28.80,"cosm_nac"),
+    ("1872","Creme Dream Brand 001 Allure Sport 200ml",39.60,"cosm_nac"),
+    ("1272","Creme Dream Brand 012 La Vie 200ml",39.60,"cosm_nac"),
+    ("1273","Creme Dream Brand 034 212 VIP Rose 200ml",39.60,"cosm_nac"),
+    ("2055","Isabelle Creme La Vie 200ml",59.40,"cosm_nac"),
+    ("1903","Body Lotion VS Bare Vanilla Shimmer 236ml",110.70,"cosm_vs_lot"),
+    ("1559","Body Lotion VS Pure Seduction Shimmer 236ml",107.00,"cosm_vs_lot"),
+    ("1622","Body Splash VS Midnight Bloom",105.30,"cosm_vs_spl"),
+    ("488","Body Splash VS Rush",105.30,"cosm_vs_spl"),
+    ("1185","La Rive In Woman 90ml",68.40,"la_rive"),
+    ("1166","La Rive Madame Isabelle 100ml",68.40,"la_rive"),
+    ("2179","French Avenue Vulcan Feu EDP 100ml",285.30,"perf_arabe"),
+    ("2246","Lattafa Asad - Kit 4 x 25ml",260.10,"perf_arabe"),
+    ("1870","Lattafa Fakhar Gold EDP 100ml",160.20,"perf_arabe"),
+    ("1962","Lattafa Yara - Kit 4 x 25ml",215.10,"perf_arabe"),
+    ("2005","Maison Alhambra Alpine Homme Sport EDP 100ml",160.20,"perf_arabe"),
+    ("1586","Maison Alhambra Delilah EDP 100ml",180.00,"perf_arabe"),
+    ("2258","Maison N.02 Men EDP 100ml",140.40,"perf_arabe"),
+    ("142","Animale For Men 100ml EDT",175.50,"perf_import"),
+    ("22","CH 212 NYC Men 100ml EDT",395.10,"perf_import"),
+    ("25","CH 212 Sexy Fem 100ml EDP",480.60,"perf_import"),
+    ("1037","CH 212 VIP Black Men - Kit 100ml",430.20,"perf_import"),
+    ("24","CH 212 VIP Men 100ml EDT",395.10,"perf_import"),
+    ("1074","Dior Sauvage 100ml EDP",690.30,"perf_import"),
+    ("1989","Dolce & Gabbana K Men - Kit 100ml + gel + pós barba",460.80,"perf_import"),
+    ("1172","Jean Paul Gaultier Le Male Le Parfum Intense 125ml",480.60,"perf_import"),
+    ("70","Marina de Bourbon Rouge Royal 100ml EDP",209.70,"perf_import"),
+    ("452","Paco Rabanne Invictus - Kit lata 100ml + gel de banho",430.20,"perf_import"),
+    ("1482","Versace Dylan Turquoise Fem 100ml",460.80,"perf_import"),
+    ("811","Versace Pour Homme 100ml EDT",390.60,"perf_import"),
 ]
 
 # False = imagens WebP externas (site leve, lazy-load) | True = base64 embutido (HTML unico)
